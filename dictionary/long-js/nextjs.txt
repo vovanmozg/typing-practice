@@ -1,0 +1,886 @@
+const response = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/with-middleware.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+const response = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/another-middleware.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+const response = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/index.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+return matchers && matchers.some((m) => m.regexp.includes('with-middleware')) && matchers.some((m) => m.regexp.includes('another-middleware')) ? 'success' : 'failed';
+const response = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/middleware/works.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+describe.each([{ title: '' }, { title: ' and trailingSlash', trailingSlash: true }])('using a single matcher with i18n$title', ({ trailingSlash }) => {
+const res1 = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/en.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+describe.each([{ title: '' }, { title: ' and trailingSlash', trailingSlash: true }])('using a single matcher with i18n and basePath$title', ({ trailingSlash }) => {
+const res1 = await fetchViaHTTP(next.url, `/root/_next/data/${next.buildId}/en.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+const res2 = await fetchViaHTTP(next.url, `/root/_next/data/${next.buildId}/es.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+for (const [asPath, pathname, query] of [['/'], ['/another'], ['/dynamic/first', '/dynamic/[slug]', { slug: 'first' }], ['/dynamic/second', '/dynamic/[slug]', { slug: 'second' }]]) {
+tests: [/webpack-runtime\.js/, /node_modules\/react\/index\.js/, /node_modules\/react\/package\.json/, /node_modules\/react\/cjs\/react\.production\.min\.js/],
+const chunks = (await fs.readdir(path.join(next.testDir, '.next', 'static', 'chunks'))).filter((f) => f.endsWith('.js'));
+expect(await browser.elementByCss('#root > .segments').text()).toMatchInlineSnapshot(`"[\\"segment-name\\",\\"value1\\",\\"segment-name2\\",\\"value2\\",\\"value3/value4\\"]"`);
+expect(await browser.elementByCss('#before-static > .segments').text()).toMatchInlineSnapshot(`"[\\"segment-name2\\",\\"value2\\",\\"value3/value4\\"]"`);
+expect(await browser.elementByCss('#before-param > .segments').text()).toMatchInlineSnapshot(`"[\\"value2\\",\\"value3/value4\\"]"`);
+expect(await browser.elementByCss('#root > .segments').text()).toMatchInlineSnapshot(`"[\\"segment-name\\",\\"param1\\",\\"different-segment\\"]"`);
+expect(await browser.elementByCss('#root > .segments').text()).toMatchInlineSnapshot(`"[\\"segment-name\\",\\"param1\\",\\"segment-name2\\",\\"different-value\\",\\"value3/value4\\"]"`);
+expect(await browser.elementByCss('#before-param > .segments').text()).toMatchInlineSnapshot(`"[\\"different-value\\",\\"value3/value4\\"]"`);
+expect(await browser.elementByCss('#root > .segments').text()).toMatchInlineSnapshot(`"[\\"segment-name\\",\\"param1\\",\\"segment-name2\\",\\"value2\\",\\"different/random/paths\\"]"`);
+expect(await browser.eval(`[...document.styleSheets].some(({ rules }) => [...rules].some(rule => rule.selectorText.includes('this_should_not_be_included')))`)).toBe(false);
+expect(await browser.eval(`[...document.styleSheets].some(({ rules }) => [...rules].some(rule => rule.selectorText.includes('this_should_not_be_included_in_inner_path')))`)).toBe(false);
+path                                                           | outerLayout                                             | innerLayout
+${'/hooks/use-selected-layout-segment/first'}                  | ${['first']}                                            | ${[]}
+${'/hooks/use-selected-layout-segment/first/slug1'}            | ${['first', 'slug1']}                                   | ${['slug1']}
+${'/hooks/use-selected-layout-segment/first/slug2/second'}     | ${['first', 'slug2', '(group)', 'second']}              | ${['slug2', '(group)', 'second']}
+${'/hooks/use-selected-layout-segment/first/slug2/second/a/b'} | ${['first', 'slug2', '(group)', 'second', 'a/b']}       | ${['slug2', '(group)', 'second', 'a/b']}
+${'/hooks/use-selected-layout-segment/rewritten'}              | ${['first', 'slug3', '(group)', 'second', 'catch/all']} | ${['slug3', '(group)', 'second', 'catch/all']}
+${'/hooks/use-selected-layout-segment/rewritten-middleware'}   | ${['first', 'slug3', '(group)', 'second', 'catch/all']} | ${['slug3', '(group)', 'second', 'catch/all']}
+path                                                           | outerLayout | innerLayout
+${'/hooks/use-selected-layout-segment/first'}                  | ${'first'}  | ${null}
+${'/hooks/use-selected-layout-segment/first/slug1'}            | ${'first'}  | ${'slug1'}
+expect(page.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=640&q=90 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=828&q=90 2x');
+expect(comp.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=640&q=80 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=828&q=80 2x');
+expect(root.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=640&q=85 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=828&q=85 2x');
+expect(page.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=640&q=60 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=828&q=60 2x');
+expect(comp.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=640&q=50 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.3f1a293b.png&w=828&q=50 2x');
+expect(page.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.fab2915d.jpg&w=640&q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.fab2915d.jpg&w=828&q=75 2x');
+expect(comp.attr('srcset')).toBe('/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.fab2915d.jpg&w=640&q=65 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftest.fab2915d.jpg&w=828&q=65 2x');
+async function checkMeta(browser: BrowserInterface, name: string, content: string | string[], property: string = 'property', tag: string = 'meta', field: string = 'content') {
+const values = await browser.eval(`[...document.querySelectorAll('${tag}[${property}="${name}"]')].map((el) => el.getAttribute("${field}"))`);
+const checkLink = (browser: BrowserInterface, rel: string, content: string | string[]) => checkMeta(browser, rel, content, 'rel', 'link', 'href');
+expect($('[property="og:image"]').attr('content')).toMatch(/https:\/\/example.com\/_next\/static\/media\/metadata\/opengraph-image.\w+.png/);
+expect($('[name="twitter:image"]').attr('content')).toMatch(/https:\/\/example.com\/_next\/static\/media\/metadata\/twitter-image.\w+.png/);
+expect(await queryMetaProps(browser, 'link', 'href="/apple-icon-x3.png"', ['sizes', 'type'])).toEqual({ sizes: '180x180', type: 'image/png' });
+expect(await browser.eval(`window.getComputedStyle(document.querySelector('p')).fontFamily`)).toMatch(/^__myFont_.{6}, __myFont_Fallback_.{6}$/);
+expect(await browser.elementByCss('[href="/intercepting-parallel-modal/photos/1"]').click().waitForElementByCss('#photo-modal-1').text()).toBe('Photo MODAL 1');
+it.each([['page'], ['layout'], ['component']])('should add preconnect when preloading is disabled in %s', async (type: string) => {
+expect(await browser.elementByCss(`a[href="/nested-navigation/${category.toLowerCase()}"]`).click().waitForElementByCss(`#all-${category.toLowerCase()}`).text()).toBe(`All ${category}`);
+await browser.elementByCss(`a[href="/nested-navigation/${category.toLowerCase()}/${subcategory.toLowerCase()}"]`).click().waitForElementByCss(`#${subcategory.toLowerCase()}`).text(),
+it.each([{ pathname: '/redirect-1' }, { pathname: '/redirect-2' }, { pathname: '/blog/old-post' }, { pathname: '/redirect-3/some' }, { pathname: '/redirect-4' }])(
+expect(res.headers.get('vary')).toBe(isNextDeploy ? 'RSC, Next-Router-State-Tree, Next-Router-Prefetch' : 'RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding');
+await next.patchFile(filePath, origContent.replace("// 'use client'", "'use client'").replace('hello dashboard/page!', 'hello dashboard/page in client component!'));
+await next.patchFile(filePath, origContent.replace("// 'use client'", "'use client'").replace('hello dashboard/page!', 'hello dashboard/page in client component2!'));
+expect(await browser.waitForElementByCss('body').elementByCss('h2').text()).toBe('Application error: a client-side exception has occurred (see the browser console for more information).');
+expect(await browser.elementByCss('#link-to-info-123').click().waitForElementByCss('#message').text()).toBe(`hello from app/dashboard/deployments/info/[id]. ID is: 123`);
+expect(headTags.find((el) => el.attribs.src === '/hello3.js' && el.attribs['data-slug'] === 'post-1')).toBeTruthy();
+export function cookieWithRequestMeta(meta: Record<string, any>, { cookie = '', ...headers }: Record<string, string> = {}): Record<string, string> {
+export const helloHandler = async (request: NextRequest, { params }: { params?: Record<string, string | string[]> }): Promise<Response> => {
+it.each(['/static/first/data.json', '/static/second/data.json', '/static/three/data.json'])('responds correctly on %s', async (path) => {
+it.each(['/revalidate-1/first/data.json', '/revalidate-1/second/data.json', '/revalidate-1/three/data.json'])('revalidates correctly on %s', async (path) => {
+describe.each(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'])('made via a %s request', (method) => {
+it.each([['get'], ['head'], ['options'], ['post'], ['put'], ['delete'], ['patch']])('should print an error when using lowercase %p in dev', async (method: string) => {
+expect(next.cliOutput).toMatch(/Detected lowercase method '.+' in '.+\/route\.ts'\. Export the uppercase '.+' method name to fix this error\./);
+dataRouteRegex: normalizeRegEx('^\\/static\\-to\\-dynamic\\-error\\-forced\\/([^\\/]+?)\\.rsc$'),
+routeRegex: normalizeRegEx('^\\/static\\-to\\-dynamic\\-error\\-forced\\/([^\\/]+?)(?:\\/)?$'),
+it.each(['/hello', '/en/hello', '/nl-NL/hello', '/nl-NL/about'])('should match', async (path) => {
+it.each(['/invalid/hello', '/hello/invalid', '/about', '/en/about'])('should not match', async (path) => {
+itif(!isModeDeploy).each(['hello', 'en_hello', 'nl-NL_hello', 'nl-NL_about'])('should match has query on client routing', async (id) => {
+const res = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/es/about.json`, { override: 'internal' }, { redirect: 'manual', headers: { 'x-nextjs-data': '1' } });
+await check(() => browser.eval('next.router.query.hello === "world" ? "success" : JSON.stringify(next.router.query)'), 'success');
+return didReq || requests.some((req) => new URL(req, 'http://n').pathname.endsWith('/to-ssg.json')) ? 'found' : JSON.stringify(requests);
+const dataRes = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}${i18n ? '/en' : ''}/ssr-page.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+expect(requests.filter((req) => req.includes('_next/data'))).toEqual([`${next.url}/_next/data/${next.buildId}${i18n ? '/en' : ''}/sha.json?hello=goodbye`]);
+expect(hrefs.map((href) => new URL(href).pathname.replace(/\/_next\/data\/[^/]+/, ''))).toEqual([`${basePath}/gsp.json`, `${basePath}/index.json`, `${basePath}/index/index.json`]);
+const res = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/es/old-home.json`, { override: 'internal' }, { redirect: 'manual', headers: { 'x-nextjs-data': '1' } });
+const res = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/es/old-home.json`, { override: 'external' }, { redirect: 'manual', headers: { 'x-nextjs-data': '1' } });
+expect(next.cliOutput).toContain("Invalid href '/hello//world' passed to next/router in page: '/my/path/[name]'. Repeated forward-slashes (//) or backslashes \\ are not valid in the href.");
+const emitPopsStateEvent = (browser: BrowserInterface, state: HistoryState) => browser.eval(`window.dispatchEvent(new PopStateEvent("popstate", { state: ${JSON.stringify(state)} }))`);
+expect(await browser.eval('getComputedStyle(document.querySelector("#app-open-sans")).fontFamily')).toMatch(/^__Open_Sans_.{6}, __Open_Sans_Fallback_.{6}$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#with-fonts-open-sans")).fontFamily')).toMatch(/^__Open_Sans_.{6}, __Open_Sans_Fallback_.{6}$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#comp-with-fonts-inter")).fontFamily')).toMatch(/^__Inter_.{6}, __Inter_Fallback_.{6}$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#comp-with-fonts-roboto")).fontFamily')).toMatch(/^__Roboto_.{6}, __Roboto_Fallback_.{6}$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#with-fallback-fonts-classname")).fontFamily')).toMatch(/^__Open_Sans_.{6}, system-ui, Arial$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#with-fallback-fonts-style")).fontFamily')).toMatch(/^__Open_Sans_.{6}, system-ui, Arial$/);
+expect(await browser.eval('getComputedStyle(document.querySelector("#with-fallback-fonts-variable")).fontFamily')).toMatch(/^__Open_Sans_.{6}, system-ui, Arial$/);
+const dataRes = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/ssr-page.json`, undefined, { headers: { 'x-nextjs-data': '1' } });
+expect(requests.filter((req) => req.includes('_next/data'))).toEqual([`${next.url}/_next/data/${next.buildId}/sha.json?hello=goodbye`]);
+expect(configScript.replace(/(?: *[\n\r])+ */g, '')).toEqual('partytown = {lib: "/_next/static/~partytown/"};');
+next = await createNextApp(`<Script id="inline-script" strategy="worker" dangerouslySetInnerHTML={{__html: "document.getElementById('text').textContent += 'abcd'"}}/>`);
+expect(configScript.replace(/(?: *[\n\r])+ */g, '')).toEqual('partytown = {lib: "/_next/static/~partytown/",debug: true};');
+const toBuild = ['/', '/another', '/something', '/normal', '/blog/post-1', '/blog/post-1/comment-1', '/catchall/first'];
+expect(hrefs.map((href) => new URL(href).pathname.replace(/^\/_next\/data\/[^/]+/, ''))).toContainEqual('/lang/en/about.json');
+await check(() => next.cliOutput, /Warning: data for page "\/large-page-data" is 256 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance/);
+await check(() => next.cliOutput, /Warning: data for page "\/large-page-data-ssr" is 256 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance/);
+await next.patchFile(indexPage, origContent.replace('// throw new', 'throw new').replace('{/* <div', '<div').replace('</div> */}', '</div>'));
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/api\\-docs\\/(.+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/blocking\\-fallback\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/blocking\\-fallback\\-once\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/blocking\\-fallback\\-some\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/blog\\/([^\\/]+?)\\.json$`),
+namedDataRouteRegex: `^/_next/data/${escapeRegex(next.buildId)}/blog/(?<post>[^/]+?)/(?<comment>[^/]+?)\\.json$`,
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/blog\\/([^\\/]+?)\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/catchall\\-explicit\\/(.+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/catchall\\-optional(?:\\/(.+?))?\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/dynamic\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/fallback\\-only\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/lang\\/([^\\/]+?)\\/about\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/non\\-json\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/non\\-json\\-blocking\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(next.buildId)}\\/user\\/([^\\/]+?)\\/profile\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/blocking\\-fallback\\-once\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/blocking\\-fallback\\-some\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/blocking\\-fallback\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/blog\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/blog\\/([^\\/]+?)\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/dynamic\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/fallback\\-only\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/lang\\/([^\\/]+?)\\/about\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/non\\-json\\-blocking\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/non\\-json\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/user\\/([^\\/]+?)\\/profile\\.json$`),
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapedBuildId}\\/catchall\\-optional(?:\\/(.+?))?\\.json$`),
+previewCookie += `${isBypass ? '__prerender_bypass' : '__next_preview_data'}=${c[isBypass ? '__prerender_bypass' : '__next_preview_data']}`;
+tests: [/webpack-runtime\.js/, /node_modules\/react\/index\.js/, /node_modules\/react\/package\.json/, /node_modules\/react\/cjs\/react\.production\.min\.js/, /node_modules\/next/],
+await check(() => (next.cliOutput.match(/throwing error for \/blocking-fallback\/test-errors-1/).length === 1 ? 'success' : next.cliOutput), 'success');
+await check(() => (next.cliOutput.match(/throwing error for \/blocking-fallback\/test-errors-2/).length === 1 ? 'success' : next.cliOutput), 'success');
+return redirect.statusCode === 308 && (redirect.destination === '/:path+' || redirect.destination === '/:path+/');
+let res = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/middleware-rewrite-with-slash.json`, undefined, { redirect: 'manual', headers: { 'x-nextjs-data': '1' } });
+res = await fetchViaHTTP(next.url, `/_next/data/${next.buildId}/middleware-rewrite-without-slash.json`, undefined, { redirect: 'manual', headers: { 'x-nextjs-data': '1' } });
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(buildId)}\\/blog\\/([^\\/]+?)\\.json$`),
+namedDataRouteRegex: `^/_next/data/${escapeRegex(buildId)}/blog/(?<post>[^/]+?)/(?<comment>[^/]+?)\\.json$`,
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(buildId)}\\/blog\\/([^\\/]+?)\\/([^\\/]+?)\\.json$`),
+dataRouteRegex: `^\\/_next\\/data\\/${escapeRegex(buildId)}\\/not\\-found\\/([^\\/]+?)\\.json$`,
+dataRouteRegex: normalizeRegEx(`^\\/_next\\/data\\/${escapeRegex(buildId)}\\/user\\/([^\\/]+?)\\/profile\\.json$`),
+const toBuild = ['/', '/another', '/something', '/normal', '/blog/post-1', '/blog/post-1/comment-1'];
+const [three, four] = await Promise.all([fetchWithDuration(ctx.appPort, '/_next/image', query, opts), fetchWithDuration(ctx.appPort, '/_next/image', query, opts)]);
+const xCache = [res1, res2, res3].map((r) => r.headers.get('X-Nextjs-Cache')).sort((a, b) => b.localeCompare(a));
+expect(stderr).toContain('The value at .images.remotePatterns[0] has an unexpected property, foo, which is not in the list of allowed properties (hostname, pathname, port, protocol).');
+it.each(undefinedProperties.map((api) => ({ api })))('does not throw on using $api', async ({ api }) => {
+it.each(['Buffer', ...undefinedProperties].map((api) => ({ api })))('does not warn on using $api', ({ api }) => {
+expect(await browser.elementById('img1').getAttribute('srcset')).toBe(`/_next/image?url=%2Fwide.png&w=1200&q=75 1x, /_next/image?url=%2Fwide.png&w=3840&q=75 2x`);
+expect(await browser.elementById('img3').getAttribute('srcset')).toBe(`/_next/image?url=%2Ftest.png&w=640&q=75 1x, /_next/image?url=%2Ftest.png&w=828&q=75 2x`);
+expect(await img.getAttribute('style')).toBe('position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;object-fit:cover;object-position:10% 10%;color:transparent');
+expect(await getRedboxHeader(browser)).toContain('Invalid src prop (https://google.com/test.png) on `next/image`, hostname "google.com" is not configured under images in your `next.config.js`');
+expect(await browser.eval(`document.getElementById("fill-image-1").getAttribute('style')`)).toBe('position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent');
+expect(warnings).toContain('Image with src "/wide.png" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative.');
+expect(warnings).toContain('Image with src "/wide.png" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.');
+outputs: ['The value at .images.loader must be one of', 'The value at .rewrites must be a function that returns a Promise', 'The value at .swcMinify must be a boolean but it was a string'],
+expect(await browser.elementById('basic-image').getAttribute('srcset')).toBe('https://customresolver.com/foo.jpg?w~~480,q~~60 1x, https://customresolver.com/foo.jpg?w~~1024,q~~60 2x');
+expect(await browser.elementById(id).getAttribute('srcset')).toBe('/docs/_next/image?url=%2Fdocs%2Fwide.png&w=1200&q=75 1x, /docs/_next/image?url=%2Fdocs%2Fwide.png&w=3840&q=75 2x');
+expect(await browser.elementById(id).getAttribute('srcset')).toBe('/_next/image?url=%2Fwide.png&w=1200&q=75 1x, /_next/image?url=%2Fwide.png&w=3840&q=75 2x');
+}, '/_next/image?url=%2Fwide.png&w=640&q=75 640w, /_next/image?url=%2Fwide.png&w=750&q=75 750w, /_next/image?url=%2Fwide.png&w=828&q=75 828w, /_next/image?url=%2Fwide.png&w=1080&q=75 1080w, /_next/image?url=%2Fwide.png&w=1200&q=75 1200w, /_next/image?url=%2Fwide.png&w=1920&q=75 1920w, /_next/image?url=%2Fwide.png&w=2048&q=75 2048w, /_next/image?url=%2Fwide.png&w=3840&q=75 3840w');
+}, '/_next/image?url=%2Fwide.png&w=256&q=75 256w, /_next/image?url=%2Fwide.png&w=384&q=75 384w, /_next/image?url=%2Fwide.png&w=640&q=75 640w, /_next/image?url=%2Fwide.png&w=750&q=75 750w, /_next/image?url=%2Fwide.png&w=828&q=75 828w, /_next/image?url=%2Fwide.png&w=1080&q=75 1080w, /_next/image?url=%2Fwide.png&w=1200&q=75 1200w, /_next/image?url=%2Fwide.png&w=1920&q=75 1920w, /_next/image?url=%2Fwide.png&w=2048&q=75 2048w, /_next/image?url=%2Fwide.png&w=3840&q=75 3840w');
+}, '/_next/image?url=%2Fwide.png&w=16&q=75 16w, /_next/image?url=%2Fwide.png&w=32&q=75 32w, /_next/image?url=%2Fwide.png&w=48&q=75 48w, /_next/image?url=%2Fwide.png&w=64&q=75 64w, /_next/image?url=%2Fwide.png&w=96&q=75 96w, /_next/image?url=%2Fwide.png&w=128&q=75 128w, /_next/image?url=%2Fwide.png&w=256&q=75 256w, /_next/image?url=%2Fwide.png&w=384&q=75 384w, /_next/image?url=%2Fwide.png&w=640&q=75 640w, /_next/image?url=%2Fwide.png&w=750&q=75 750w, /_next/image?url=%2Fwide.png&w=828&q=75 828w, /_next/image?url=%2Fwide.png&w=1080&q=75 1080w, /_next/image?url=%2Fwide.png&w=1200&q=75 1200w, /_next/image?url=%2Fwide.png&w=1920&q=75 1920w, /_next/image?url=%2Fwide.png&w=2048&q=75 2048w, /_next/image?url=%2Fwide.png&w=3840&q=75 3840w');
+}, /Image with src (.*)jpg(.*) may not render properly as a child of a flex container. Consider wrapping the image with a div to configure the width/gm);
+expect(warnings).toMatch(/Image with src (.*)jpg(.*) may not render properly with a parent using position:"static". Consider changing the parent style to position:"relative"/gm);
+expect([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a].every((b, i) => buffer[i] === b)).toBeTrue();
+[projectName, '--ts', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`],
+[projectName, '--ts', '--eslint', '--src-dir', '--no-experimental-app', `--import-alias=@/*`],
+[projectName, '--js', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`],
+[projectName, '--js', '--eslint', '--src-dir', '--no-experimental-app', `--import-alias=@/*`],
+[projectName, '--ts', '--experimental-app', '--eslint', '--no-src-dir', `--import-alias=@/*`],
+[projectName, '--js', '--experimental-app', '--eslint', '--no-src-dir', `--import-alias=@/*`],
+[projectName, '--js', '--experimental-app', '--eslint', '--src-dir', '--import-alias=@/*'],
+const res = await run([projectName, '--js', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run([projectName, '--js', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], { cwd });
+const res = await run([projectName, '--js', '--eslint', '--example', `${exampleRepo}/${examplePath}`], {
+const res = await run([projectName, '--js', '--eslint', '--example', 'https://github.com/vercel/nextjs-portfolio-starter/'], {
+const res = await run([projectName, '--js', '--eslint', '--example', exampleRepo, '--example-path', examplePath], {
+const res = await run([projectName, '--js', '--eslint', '--example', `${exampleRepo}/${examplePath}`, '--example-path', examplePath], {
+const res = await run([projectName, '--js', '--eslint', '--example', '__internal-testing-retry', '--import-alias=@/*'], {
+const res = await run([projectName, '--js', '--eslint', '--example', 'default', '--import-alias=@/*'], {
+const res = await run([projectName, '--js', '--eslint', '--example', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run(['.', '--js', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run(['--js', '--eslint', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run([projectName, '--js', '--eslint', '--use-npm', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run([projectName, '--js', '--eslint', '--use-npm', '--example', `${exampleRepo}/${examplePath}`], { cwd });
+const res = await run([projectName, '--js', '--eslint', '--use-pnpm', '--no-src-dir', '--no-experimental-app', `--import-alias=@/*`], {
+const res = await run([projectName, '--js', '--eslint', '--use-pnpm', '--example', `${exampleRepo}/${examplePath}`], { cwd });
+const res = await run([projectName, '--js', '--eslint', '--example', `${exampleRepo}/${examplePath}`], { cwd, env: { ...process.env, npm_config_user_agent: 'npm' } });
+const res = await run([projectName, '--js', '--eslint', '--example', `${exampleRepo}/${examplePath}`], { cwd, env: { ...process.env, npm_config_user_agent: 'yarn' } });
+const res = await run([projectName, '--js', '--eslint', '--example', `${exampleRepo}/${examplePath}`], { cwd, env: { ...process.env, npm_config_user_agent: 'pnpm' } });
+export const mapSrcFiles = (files: string[], srcDir?: boolean) => files.map((file) => (srcDir && SRC_DIR_NAMES.some((name) => file.startsWith(name)) ? path.join('src', file) : file));
+require('console').error(`missing expected file ${file}`, glob.sync('**/*', { cwd, ignore: '**/node_modules/**' }), files);
+require('console').error(`unexpected file present ${file}`, glob.sync('**/*', { cwd, ignore: '**/node_modules/**' }), files);
+await fs.writeFile(testServer, (await fs.readFile(testServer, 'utf8')).replace('console.error(err)', `console.error('top-level', err)`).replace('conf:', 'minimalMode: true,conf:'));
+for (const path of ['/', '/dynamic/another/', '/dynamic/another', '/fallback/first/', '/fallback/first', '/fallback/another/', '/fallback/another']) {
+await fs.writeFile(testServer, (await fs.readFile(testServer, 'utf8')).replace('console.error(err)', `console.error('top-level', err)`).replace('conf:', `minimalMode: ${minimalMode},conf:`));
+await browser.eval('next.router.prefetch("/blog/first", undefined, { unstable_skipClientCache: true }).finally(() => { window.prefetchDone = "yes" })');
+await browser.eval('next.router.push("/blog/first", undefined, { unstable_skipClientCache: true }).finally(() => { window.prefetchDone = "yes" })');
+return cacheKeys.some((url) => url.includes('/blog/first')) && cacheKeys.some((url) => url.includes('/blog/second')) ? 'success' : JSON.stringify(requests, null, 2);
+text: 'query pagesQuery {\n  viewer {\n    user {\n      id\n      name\n    }\n    id\n  }\n}\n',
+await next.patchFile(indexPage, `import {secondData} from "@lib/second-data"\n${indexContent.replace('</p>', `</p><p id="second-data">{JSON.stringify(secondData)}</p>`)}`);
+expect(await getRedboxHeader(browser)).toMatch(`Objects are not valid as a React child (found: [object RegExp]). If you meant to render a collection of children, use an array instead.`);
+browserLogs.some(({ message }) => message.includes("Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.")),
+const editedContent = originalContent.replace('<a className="text-blue-600" href="https://nextjs.org" id="test-link">', '<a className="text-red-600" href="https://nextjs.org" id="test-link">');
+])('basic next/dynamic usage, basePath: %p with %p compiler', (basePath: string, testCase: 'swc' | 'babel' | 'document.getInitialProps') => {
+You're importing a component that needs next/headers. That only works in a Server Component which is not supported in the pages/ directory. Read more: https://beta.nextjs.org/docs/rendering/server-and-client-components
+You're importing a component that needs server-only. That only works in a Server Component which is not supported in the pages/ directory. Read more: https://beta.nextjs.org/docs/rendering/server-and-client-components
+expect(await session.evaluate(() => (document.querySelector('body > nextjs-portal').shadowRoot.querySelector('#nextjs__container_errors_desc a:nth-of-type(1)') as any).href)).toMatchSnapshot();
+expect(await session.evaluate(() => (document.querySelector('body > nextjs-portal').shadowRoot.querySelector('#nextjs__container_errors_desc a:nth-of-type(2)') as any).href)).toMatchSnapshot();
+expect(await session.evaluate(() => (document.querySelector('body > nextjs-portal').shadowRoot.querySelector('#nextjs__container_errors_desc a:nth-of-type(1)') as any).href)).toMatch(
+expect(await session.getRedboxDescription()).toMatchInlineSnapshot(`"Error: Failed prop type: The prop \`href\` expects a \`string\` or \`object\` in \`<Link>\`, but got \`undefined\` instead."`);
+expect(await session.evaluate(() => (window as any).log)).toEqual(['init LeafV1', 'init MiddleAV1', 'init MiddleBV1', 'init MiddleCV1', 'init RootV1']);
+await session.write('./foo.js', `;(typeof global !== 'undefined' ? global : window).log.push('init FooV1'); import './bar'; export default function Foo() {};`);
+await session.write('./bar.js', `;(typeof global !== 'undefined' ? global : window).log.push('init BarV1'); export default function Bar() {};`);
+await session.patch('index.js', `;(typeof global !== 'undefined' ? global : window).log = []; require('./foo'); export default () => null;`);
+didFullRefresh = didFullRefresh || !(await session.patch('./bar.js', `window.log.push('init BarV1.1'); export default function Bar() {};`));
+didFullRefresh = didFullRefresh || !(await session.patch('./bar.js', `window.log.push('init BarV2'); export default function Bar() {};`));
+didFullRefresh = didFullRefresh || !(await session.patch('./bar.js', `window.log.push('init BarV3'); export default function Bar() {};`));
+You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with \\"use client\\", so they're Server Components by default.
+expect(await session.getRedboxDescription()).toMatchInlineSnapshot(`"Error: Page with \`dynamic = \\"error\\"\` couldn't be rendered statically because it used \`cookies\`"`);
+The error was caused by using 'styled-jsx' in 'app/comp2.js'. It only works in a Client Component but none of its parents are marked with \\"use client\\", so they're Server Components by default.
+await session.patch('index.js', file.replace('//', "if (typeof window !== 'undefined') throw new Error('Component error')"));
+test.each([['server'], ['client']])('%s component can recover from error thrown in the module', async (type: string) => {
+ws.on('close', () => page.evaluate(`console.log('closed websocket ${ws.url()}')`).catch(() => {}));
+this._buildId = (await fs.readFile(path.join(this.testDir, this.nextConfig?.distDir || '.next', 'BUILD_ID'), 'utf8').catch(() => '')).trim();
+const deployRes = await execa('vercel', ['deploy', '--build-env', 'NEXT_PRIVATE_TEST_MODE=1', '--build-env', 'NEXT_TELEMETRY_DISABLED=1', ...additionalEnv, '--force', ...vercelFlags], {
+type OmitFirstArgument<F> = F extends (firstArgument: any, ...args: infer P) => infer R ? (...args: P) => R : never;
+const tmpDir = skipIsolatedNext ? path.join(__dirname, '../../tmp') : process.env.NEXT_TEST_DIR || (await fs.realpath(os.tmpdir()));
+this.basePath = content.match(/['"`]?basePath['"`]?:.*?['"`](.*?)['"`]/)?.[1] || '';
+path.join(__dirname, '../../traces', `${path.relative(path.join(__dirname, '../../'), process.env.TEST_FILE_PATH).replace(/\//g, '-')}`, `next-trace`),
+expect(() => m(p, new URL('https://example.com'))).toThrow('Pattern should define hostname but found\n{"protocol":"https"}');
+it('should handle amp as the middle parameter', () => check('/some/path?page=10&amp=1&last=here', '/some/path?page=10&last=here'));
+response.cookies.set('foo', 'bar', { path: '/test' }).set('fooz', 'barz', { path: '/test2' });
+expect(Object.fromEntries(response.headers.entries())['set-cookie']).toBe('foo=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT, fooz=barz; Path=/');
+expect(Object.fromEntries(response.headers.entries())['set-cookie']).toBe('foo=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT, fooz=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT');
+expect(() => getSortedRoutes(['/', '/blog', '/blog/[id]', '/blog/[id]/comments/[cid]', '/blog/[cid]'])).toThrowError(/different slug names/);
+expect(() => getSortedRoutes(['/', '/blog', '/blog/[id]/comments/[id]', '/blog/[id]'])).toThrowError(/the same slug name/);
+expect(() => getSortedRoutes(['/blog/[id]', '/blog/[id]/[...id]'])).toThrowError(/the same slug name/);
+expect(() => getSortedRoutes(['/blog/[...id]/[...id2]'])).toThrowErrorMatchingInlineSnapshot(`"Catch-all must be the last part of the URL."`);
+expect(() => getSortedRoutes(['/blog/[...id]/abc'])).toThrowErrorMatchingInlineSnapshot(`"Catch-all must be the last part of the URL."`);
+expect(() => getSortedRoutes(['/blog/[....id]/abc'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start with erroneous periods ('.id')."`);
+expect(() => getSortedRoutes(['/blog/[..id]/abc'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start with erroneous periods ('..id')."`);
+expect(() => getSortedRoutes(['/blog/[[...id]'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start or end with extra brackets ('[...id')."`);
+expect(() => getSortedRoutes(['/blog/[[[...id]]'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start or end with extra brackets ('[...id')."`);
+expect(() => getSortedRoutes(['/blog/[...id]]'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start or end with extra brackets ('id]')."`);
+expect(() => getSortedRoutes(['/blog/[[...id]]]'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start or end with extra brackets ('id]')."`);
+expect(() => getSortedRoutes(['/blog/[[[...id]]]'])).toThrowErrorMatchingInlineSnapshot(`"Segment names may not start or end with extra brackets ('[...id]')."`);
+expect(() => getSortedRoutes(['/[[blog]]'])).toThrowErrorMatchingInlineSnapshot(`"Optional route parameters are not yet supported (\\"[[blog]]\\")."`);
+expect(() => getSortedRoutes(['/abc/[[blog]]'])).toThrowErrorMatchingInlineSnapshot(`"Optional route parameters are not yet supported (\\"[[blog]]\\")."`);
+expect(() => getSortedRoutes(['/abc/[[blog]]/def'])).toThrowErrorMatchingInlineSnapshot(`"Optional route parameters are not yet supported (\\"[[blog]]\\")."`);
+expect(() => getSortedRoutes(['/blog/[helloworld]', '/blog/[helloworld]/[hello-world]'])).toThrowError(/differ only by non-word/);
+const [, react, reactNamespace] = output.match(/(([a-z0-9_]+)(\[[^\]]*?\]|\.[a-z0-9_]+)*?)\.Fragment/i);
+expect(output).toMatchInlineSnapshot(`"var React=require('react');var __jsx=React.createElement;module.exports=function(){return __jsx(\\"div\\",null,\\"test2\\");};"`);
+expect(output).toMatchInlineSnapshot(`"import{jsx as _jsx}from\\"react/jsx-runtime\\";var a=function a(){return/*#__PURE__*/_jsx(\\"a\\",{href:\\"/\\",children:\\"home\\"});};"`);
+expect(output).toMatchInlineSnapshot(`"import React from\\"react\\";var __jsx=React.createElement;var a=function a(){return __jsx(\\"a\\",{href:\\"/\\"},\\"home\\");};"`);
+Reason: Props must be returned as a plain object from test: \`{ props: { ... } }\` (received: \`[object Null]\`)."
+Reason: Props must be returned as a plain object from test: \`{ props: { ... } }\` (received: \`[object Undefined]\`)."
+Reason: Props must be returned as a plain object from test: \`{ props: { ... } }\` (received: \`[object Array]\`)."
+Reason: Props must be returned as a plain object from test: \`{ props: { ... } }\` (received: \`[object Function]\`)."
+expect(() => isSerializableProps('/', 'test', { k: { a: [1, { n: new Date() }] } })).toThrowErrorMatchingInlineSnapshot(`
+expect(() => isSerializableProps('/', 'test', { k: { a: [1, { n: class A {} }] } })).toThrowErrorMatchingInlineSnapshot(`
+expect(() => isSerializableProps('/', 'test', { k: { a: [function () {}] } })).toThrowErrorMatchingInlineSnapshot(`
+expect(output).toMatchInlineSnapshot(`"export var __N_SSG=true;export{foo,bar as baz}from'.';export default function Test(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"export var __N_SSG=true;export function Noop(){}export default function Test(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"export var __N_SSG=true;export const foo=2;export default function Test(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"const a=2;export var __N_SSG=true;export default function Test(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"export var __N_SSG=true;export class MyClass{}export default function Test(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"export var __N_SSG=true;export default class Test extends React.Component{render(){return __jsx(\\"div\\",null);}}"`);
+expect(output).toMatchInlineSnapshot(`"class Test extends React.Component{render(){return __jsx(\\"div\\",null);}}export var __N_SSG=true;export default Test;"`);
+expect(output).toMatchInlineSnapshot(`"function El(){return __jsx(\\"div\\",null);}export var __N_SSG=true;export{El as default};"`);
+expect(output).toMatchInlineSnapshot(`"function El(){return __jsx(\\"div\\",null);}const a=5;export var __N_SSG=true;export{El as default,a};"`);
+expect(output).toMatchInlineSnapshot(`"class El extends React.Component{render(){return __jsx(\\"div\\",null);}}const a=5;export var __N_SSG=true;export{El as default,a};"`);
+expect(output).toMatchInlineSnapshot(`"import other from'other';const{a,cat:bar}=other;export var __N_SSG=true;export default function Home(){return __jsx(\\"div\\",null);}"`);
+expect(output).toMatchInlineSnapshot(`"import other from'other';const[foo]=other;export var __N_SSG=true;export default function Home(){return __jsx(\\"div\\",null);}"`);
+expect(spy).toHaveBeenCalledWith(expect.stringContaining('warn'), '`relay` has been moved out of `experimental` and into `compiler.relay`. Please update your next.config.js file accordingly.');
+['Source_Sans_Pro', { weight: '900', display: 'auto' }, 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=auto'],
+['Source_Sans_Pro', { weight: '200', style: 'italic' }, 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,200&display=swap'],
+['Roboto_Flex', { display: 'fallback', weight: 'variable', axes: ['opsz'] }, 'https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=fallback'],
+['Albert_Sans', { weight: 'variable', style: 'italic' }, 'https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@1,100..900&display=swap'],
+['Roboto', { weight: ['500', '300', '400'], style: ['normal', 'italic'] }, 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap'],
+['Roboto Mono', { style: ['italic', 'normal'] }, 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap'],
+['Poppins', { weight: ['900', '400', '100'] }, 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap'],
+['Nabla', { axes: ['EDPT', 'EHLT'] }, 'https://fonts.googleapis.com/css2?family=Nabla:EDPT,EHLT@0..200,0..24&display=swap'],
+Available weights: \`100\`, \`200\`, \`300\`, \`400\`, \`500\`, \`600\`, \`700\`, \`800\`, \`900\`, \`variable\`"
+Available axes: \`GRAD\`, \`XTRA\`, \`YOPQ\`, \`YTAS\`, \`YTDE\`, \`YTFI\`, \`YTLC\`, \`YTUC\`, \`opsz\`, \`slnt\`, \`wdth\`"
+).rejects.toThrowErrorMatchingInlineSnapshot(`"Unexpected \`variable\` in weight array for font \`Inter\`. You only need \`variable\`, it includes all available weights."`);
+Available subsets: \`cyrillic\`, \`cyrillic-ext\`, \`greek\`, \`greek-ext\`, \`latin\`, \`latin-ext\`, \`vietnamese\`"
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+var _i = arr == null ? null : typeof Symbol !== \\"undefined\\" && arr[Symbol.iterator] || arr[\\"@@iterator\\"];
+throw new TypeError(\\"Invalid attempt to destructure non-iterable instance.\\\\\\\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\\");
+if (n === \\"Arguments\\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+if (typeof Symbol !== \\"undefined\\" && iter[Symbol.iterator] != null || iter[\\"@@iterator\\"] != null) return Array.from(iter);
+use: ['hehe', 'haha', 'rawr', expect.stringMatching(/react-refresh-utils[\\/]dist[\\/]loader\.js/), 'rr', 'lol', 'bla'],
+expect(getOxfordCommaList(['1', '2', '3', '4', '5'])).toMatchInlineSnapshot(`"1, 2, 3, 4, and 5"`);
+message: '`next/script` should not be used in `next/head` component. Move `<Script />` outside of `<Head>` instead. See: https://nextjs.org/docs/messages/no-script-component-in-head',
+assert.equal(report.message, 'Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages');
+assert.equal(report.message, 'Do not use an `<a>` element to navigate to `/list/foo/bar/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages');
+message: '`<Document />` from `next/document` should not be imported outside of `pages/_document.js`. See: https://nextjs.org/docs/messages/no-document-import-in-page',
+message: 'Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font',
+message: 'Using `<link />` outside of `<Head>` will disable automatic font optimization. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font',
+message: '`next/head` should not be imported in `pages/_document.js`. Use `<Head />` from `next/document` instead. See: https://nextjs.org/docs/messages/no-head-import-in-document',
+message: '`next/head` should not be imported in `pages/_document.page.tsx`. Use `<Head />` from `next/document` instead. See: https://nextjs.org/docs/messages/no-head-import-in-document',
+message: '`next/head` should not be imported in `pages/_document/index.js`. Use `<Head />` from `next/document` instead. See: https://nextjs.org/docs/messages/no-head-import-in-document',
+message: '`next/head` should not be imported in `pages/_document/index.tsx`. Use `<Head />` from `next/document` instead. See: https://nextjs.org/docs/messages/no-head-import-in-document',
+message: 'Do not use `<head>` element. Use `<Head />` from `next/head` instead. See: https://nextjs.org/docs/messages/no-head-element',
+source: '\n  mutation UpdateName($name: String!) {\n    updateName(name: $name) {\n      id\n      name\n      status\n    }\n  }\n',
+): typeof documents['\n  mutation UpdateName($name: String!) {\n    updateName(name: $name) {\n      id\n      name\n      status\n    }\n  }\n'];
+source: '\n  query Viewer {\n    viewer {\n      id\n      name\n      status\n    }\n  }\n',
+): typeof documents['\n  query Viewer {\n    viewer {\n      id\n      name\n      status\n    }\n  }\n'];
+source: '\n  query GetAllPosts($first: Int!) {\n    postCollection(first: $first) {\n      edges {\n        node {\n          id\n          title\n          slug\n        }\n      }\n    }\n  }\n',
+): typeof documents['\n  query GetAllPosts($first: Int!) {\n    postCollection(first: $first) {\n      edges {\n        node {\n          id\n          title\n          slug\n        }\n      }\n    }\n  }\n'];
+source: '\n  query GetPostBySlug($slug: String!) {\n    post(by: { slug: $slug }) {\n      id\n      title\n      slug\n    }\n  }\n',
+): typeof documents['\n  query GetPostBySlug($slug: String!) {\n    post(by: { slug: $slug }) {\n      id\n      title\n      slug\n    }\n  }\n'];
+message: `Invalid page. '${slug}' was not found in the sitemap. Are you trying to preview a Dynamic Page Item? If so, ensure you have your List Preview Page, Item Preview Page, and Item Preview Query String Parameter set (contentid) .`,
+function useMqtt({ uri, options = {}, topicHandlers = [{ topic: '', handler: ({ topic, payload, packet }) => {} }], onConnectedHandler = (client) => {} }: useMqttProps) {
+const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const features = (await redis.hvals('features')).map((entry) => JSON.parse(entry)).sort((a, b) => b.score - a.score);
+export const pathToSearchState = (path: string) => (path.includes('?') ? qs.parse(path.substring(path.indexOf('?') + 1)) : {});
+const fetchedResults = await cloudinary.v2.search.expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`).sort_by('public_id', 'desc').max_results(400).execute();
+const response = await fetch(`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_jpg,w_8,q_70/${image.public_id}.${image.format}`);
+const pathnameIsMissingLocale = i18n.locales.every((locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`);
+const formatValues = (values: string[]) => values.map((val) => `\`${val}\``).join(', ');
+let { weight, style, preload = true, display = 'swap', axes, fallback, adjustFontFallback = true, variable, subsets: callSubsets } = data[0] || ({} as any);
+weight: '400' | '500' | '600' | '700' | '800' | Array<'400' | '500' | '600' | '700' | '800'>;
+weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'variable' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight?: '300' | '400' | '500' | '600' | '700' | 'variable' | Array<'300' | '400' | '500' | '600' | '700'>;
+weight?: '400' | '500' | '600' | '700' | '800' | '900' | 'variable' | Array<'400' | '500' | '600' | '700' | '800' | '900'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'greek' | 'greek-ext' | 'latin' | 'latin-ext' | 'vietnamese'>;
+weight: '400' | '500' | '700' | '800' | '900' | Array<'400' | '500' | '700' | '800' | '900'>;
+weight: '100' | '300' | '400' | '500' | '700' | '800' | '900' | Array<'100' | '300' | '400' | '500' | '700' | '800' | '900'>;
+weight?: '400' | '500' | '600' | '700' | '800' | 'variable' | Array<'400' | '500' | '600' | '700' | '800'>;
+weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | 'variable' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '800'>;
+weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | 'variable' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700'>;
+weight?: '400' | '500' | '600' | '700' | 'variable' | Array<'400' | '500' | '600' | '700'>;
+subsets?: Array<'greek' | 'greek-ext' | 'latin' | 'latin-ext' | 'malayalam' | 'tamil' | 'vietnamese'>;
+weight: '100' | '200' | '300' | '400' | '500' | '700' | '800' | '900' | Array<'100' | '200' | '300' | '400' | '500' | '700' | '800' | '900'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'greek' | 'greek-ext' | 'hebrew' | 'latin' | 'latin-ext' | 'vietnamese'>;
+weight: '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight?: '200' | '300' | '400' | '500' | '600' | '700' | '800' | 'variable' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '800'>;
+weight: '200' | '300' | '400' | '500' | '600' | '700' | Array<'200' | '300' | '400' | '500' | '600' | '700'>;
+weight: '300' | '400' | '500' | '600' | '700' | Array<'300' | '400' | '500' | '600' | '700'>;
+weight: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight: '100' | '300' | '400' | '700' | '900' | Array<'100' | '300' | '400' | '700' | '900'>;
+weight: '200' | '300' | '400' | '700' | '800' | Array<'200' | '300' | '400' | '700' | '800'>;
+weight: '200' | '300' | '400' | '600' | '700' | '800' | '900' | Array<'200' | '300' | '400' | '600' | '700' | '800' | '900'>;
+weight: '100' | '200' | '300' | '400' | '600' | '700' | '800' | '900' | Array<'100' | '200' | '300' | '400' | '600' | '700' | '800' | '900'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'greek' | 'hebrew' | 'latin' | 'latin-ext' | 'vietnamese'>;
+weight?: '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000' | 'variable' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
+weight: '100' | '300' | '400' | '700' | '800' | Array<'100' | '300' | '400' | '700' | '800'>;
+weight?: '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'variable' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight: '300' | '400' | '500' | '600' | '700' | '800' | '900' | Array<'300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight?: '300' | '400' | '500' | '600' | '700' | '800' | 'variable' | Array<'300' | '400' | '500' | '600' | '700' | '800'>;
+weight?: '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'variable' | Array<'300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight?: '1' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | 'variable' | Array<'1' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'>;
+weight: '100' | '200' | '300' | '400' | '500' | '600' | '700' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'greek' | 'greek-ext' | 'kayah-li' | 'latin' | 'latin-ext' | 'vietnamese'>;
+weight: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '800'>;
+weight: '300' | '400' | '600' | '700' | '800' | Array<'300' | '400' | '600' | '700' | '800'>;
+weight: '200' | '300' | '400' | '600' | '700' | Array<'200' | '300' | '400' | '600' | '700'>;
+weight: '200' | '300' | '400' | '500' | '600' | '700' | '800' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '800'>;
+weight: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '900' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '900'>;
+weight: '200' | '300' | '400' | '500' | '600' | '700' | '900' | Array<'200' | '300' | '400' | '500' | '600' | '700' | '900'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'devanagari' | 'greek' | 'greek-ext' | 'latin' | 'latin-ext' | 'vietnamese'>;
+weight: '100' | '300' | '400' | '500' | '700' | '900' | Array<'100' | '300' | '400' | '500' | '700' | '900'>;
+subsets?: Array<'cyrillic' | 'cyrillic-ext' | 'greek' | 'latin' | 'latin-ext' | 'tamil' | 'vietnamese'>;
+weight?: '200' | '300' | '400' | '500' | '600' | '700' | 'variable' | Array<'200' | '300' | '400' | '500' | '600' | '700'>;
+weight?: '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000' | 'variable' | Array<'300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
+weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000' | 'variable' | Array<'100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
+axes?: ('GRAD' | 'XTRA' | 'YOPQ' | 'YTAS' | 'YTDE' | 'YTFI' | 'YTLC' | 'YTUC' | 'opsz' | 'slnt' | 'wdth')[];
+weight: '400' | '500' | '600' | '700' | '800' | '900' | Array<'400' | '500' | '600' | '700' | '800' | '900'>;
+| Array<'1' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'>;
+weight: '300' | '400' | '500' | '700' | '800' | Array<'300' | '400' | '500' | '700' | '800'>;
+weight: '200' | '300' | '400' | '600' | '700' | '900' | Array<'200' | '300' | '400' | '600' | '700' | '900'>;
+weight: '200' | '300' | '400' | '500' | '700' | '800' | '900' | Array<'200' | '300' | '400' | '500' | '700' | '800' | '900'>;
+weight: '200' | '300' | '400' | '500' | '700' | '800' | Array<'200' | '300' | '400' | '500' | '700' | '800'>;
+weight: '300' | '400' | '500' | '700' | '900' | Array<'300' | '400' | '500' | '700' | '900'>;
+weight: '400' | '500' | '600' | '700' | '900' | Array<'400' | '500' | '600' | '700' | '900'>;
+let { src, display = 'swap', weight, style, fallback, preload = true, variable, adjustFontFallback, declarations } = fontData || ({} as any);
+element.innerHTML = '<map name="image-map-tabindex-test">' + '<area shape="rect" coords="63,19,144,45"></map>' + '<img usemap="#image-map-tabindex-test" tabindex="-1" alt="" src="' + gif + '">';
+element.innerHTML = '<map name="image-map-area-href-test">' + '<area shape="rect" coords="63,19,144,45"></map>' + '<img usemap="#image-map-area-href-test" alt="" src="' + gif + '">';
+element.innerHTML = '<map name="broken-image-map-test"><area href="#void" shape="rect" coords="63,19,144,45"></map>' + '<img usemap="#broken-image-map-test" alt="" src="' + invalidGif + '">';
+return (_document.activeElement === focusable && 'focusable') || (_document.activeElement === tabbable && 'tabbable') || '';
+return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' + element + '</svg>';
+element.innerHTML = generate(['<g id="ally-test-target"><a xlink:href="#void"><text>link</text></a></g>', '<use xlink:href="#ally-test-target" x="0" y="0" tabindex="-1" />'].join(''));
+if (nodeName === 'input' || nodeName === 'select' || nodeName === 'button' || nodeName === 'textarea') {
+if (!supports$2.focusBrokenImageMap && (!img.complete || !img.naturalHeight || img.offsetWidth <= 0 || img.offsetHeight <= 0)) {
+var isFixedBlink = (platform.name === 'Chrome' && platform.majorVersion >= 54) || (platform.name === 'Opera' && platform.majorVersion >= 41);
+(nodeName === 'input' && element.type === 'text') || element.type === 'password' || nodeName === 'select' || nodeName === 'textarea' || element.hasAttribute('contenteditable');
+p = child_process.spawn('osascript', ['-e', `tell application "Terminal" to do script "${shellQuote.quote([editor, ...args])}"`], { stdio: 'ignore' });
+if (!((frame.file?.startsWith('webpack-internal:///') || frame.file?.startsWith('file://')) && Boolean(parseInt(frame.lineNumber?.toString() ?? '', 10)))) {
+const modulePath = frame.file.replace(/^(webpack-internal:\/\/\/|file:\/\/)(\(.*\)\/)?/, '');
+const indexTransformRes = await runJscodeshift(indexTransformPath, { ...this.jscodeShiftFlags, silent: true, verbose: 0 }, [path.join(this.appDir, 'src', this.indexPage)]);
+if (element.tagName === 'title' || (element.tagName === 'meta' && element.attribs.name === 'viewport')) {
+serializedAttrs += ` dangerouslySetInnerHTML={{ __html: \`${gatherTextChildren(element.children).replace(/`/g, '\\`')}\` }}`;
+serializedHeadTags.push(hasChildren ? `<${element.tagName}${serializedAttrs}>${gatherTextChildren(element.children)}</${element.tagName}>` : `<${element.tagName}${serializedAttrs} />`);
+.filter((el) => el.value.openingElement.name && el.value.openingElement.name.type === 'JSXIdentifier' && el.value.openingElement.name.name === tagName)
+if (images.type === 'ObjectProperty' && images.key.type === 'Identifier' && images.key.name === 'images' && images.value.type === 'ObjectExpression' && images.value.properties) {
+if (p.type === 'ObjectProperty' && p.key.type === 'Identifier' && p.key.name === 'loader' && 'value' in p.value) {
+if (p.value.value === 'imgix' || p.value.value === 'cloudinary' || p.value.value === 'akamai') {
+if (p.type === 'ObjectProperty' && p.key.type === 'Identifier' && p.key.name === 'path' && 'value' in p.value) {
+const isConfig = parsed.base === 'next.config.js' || parsed.base === 'next.config.ts' || parsed.base === 'next.config.mjs' || parsed.base === 'next.config.cjs';
+const val = value.replace(/[-_\s.]+(.)?/g, (_match, chr) => (chr ? chr.toUpperCase() : ''));
+if (defaultReactDomImport && node.callee.type === 'MemberExpression' && (node.callee.object as any).name === defaultReactDomImport && (node.callee.property as any).name === 'render') {
+export function execOnce<TArgs extends any[], TResult extends unknown>(fn: (...args: TArgs) => TResult): (...args: TArgs) => TResult {
+message: `\`next/head\` should not be imported in \`pages${document}\`. Use \`<Head />\` from \`next/document\` instead. See: ${url}`,
+message: `No duplicate polyfills from Polyfill.io are allowed. ${unwantedFeatures.join(', ')} ${unwantedFeatures.length > 1 ? 'are' : 'is'} already shipped with Next.js. See: ${url}`,
+(child) => child.openingElement && child.openingElement.name && child.openingElement.name.type === 'JSXIdentifier' && child.openingElement.name.name === 'title',
+message: `Do not use \`<title>\` element with \`<Head />\` component from \`next/document\`. Titles should defined at the page-level using \`<Head />\` from \`next/head\` instead. See: ${url}`,
+attributes.find((attr) => attr.name.name === 'href' && attr.value.type === 'Literal' && !/^https?/.test(attr.value.value))
+const isInAppDir = () => (paths.includes(`app${path.sep}`) || paths.includes(`app${path.posix.sep}`)) && !paths.includes(`pages${path.sep}`) && !paths.includes(`pages${path.posix.sep}`);
+message: `Do not use \`<head>\` element. Use \`<Head />\` from \`next/head\` instead. See: ${url}`,
+if (node.declaration.type === 'ClassDeclaration' && node.declaration.superClass && 'name' in node.declaration.superClass && node.declaration.superClass.name === documentImportName) {
+return ancestor.type === exportDeclarationType && 'superClass' in ancestor && ancestor.superClass && 'name' in ancestor.superClass && ancestor.superClass.name === documentImportName;
+message: `\`<Document />\` from \`next/document\` should not be imported outside of \`pages/_document.js\`. See: ${url}`,
+message: `Using \`<img>\` could result in slower LCP and higher bandwidth. Use \`<Image />\` from \`next/image\` instead to utilize Image Optimization. See: ${url}`,
+console.warn(`Pages directory cannot be found at ${pagesDirs.join(' or ')}. ` + 'If using a custom path, please configure with the `no-html-link-for-pages` rule in your eslint config file.');
+const pagesDirs = (customPagesDirectory ? [customPagesDirectory] : rootDirs.map((dir) => [path.join(dir, 'pages'), path.join(dir, 'src', 'pages')])).flat();
+message: `Do not use an \`<a>\` element to navigate to \`${hrefPath}\`. Use \`<Link />\` from \`next/link\` instead. See: ${url}`,
+(ancestorNode) => ancestorNode.type === 'ClassDeclaration' && ancestorNode.superClass && 'name' in ancestorNode.superClass && ancestorNode.superClass.name === documentImportName,
+if (!(name.startsWith('_document') || (dir === '/_document' && name === 'index'))) {
+if (node.name.name === 'style' && node.attributes.find((attr) => attr.type === 'JSXAttribute' && attr.name.name === 'jsx')) {
+message: `\`next/script\` should not be used in \`next/head\` component. Move \`<Script />\` outside of \`<Head>\` instead. See: ${url}`,
+validate: (value) => (/.+\/\*/.test(value) ? true : 'Import alias must follow the pattern <prefix>/*'),
+const updateMessage = packageManager === 'yarn' ? 'yarn global add create-next-app' : packageManager === 'pnpm' ? 'pnpm add -g create-next-app' : 'npm i -g create-next-app';
+console.log(chalk.yellow.bold('A new version of `create-next-app` is available!') + '\n' + 'You can update by running: ' + chalk.cyan(updateMessage) + '\n');
+(await fs.promises.readFile(tsconfigFile, 'utf8')).replace(`"@/*": ["./*"]`, srcDir ? `"@/*": ["./src/*"]` : `"@/*": ["./*"]`).replace(`"@/*":`, `"${importAlias}":`),
+await fs.promises.writeFile(filePath, (await fs.promises.readFile(filePath, 'utf8')).replace(`@/`, `${importAlias.replace(/\*/g, '')}`));
+const indexPageFile = path.join('src', template === 'app' ? 'app' : 'pages', `${template === 'app' ? 'page' : 'index'}.${mode === 'ts' ? 'tsx' : 'js'}`);
+(await fs.promises.readFile(indexPageFile, 'utf8')).replace(template === 'app' ? 'app/page' : 'pages/index', template === 'app' ? 'src/app/page' : 'src/pages/index'),
+const dependencies = ['react', 'react-dom', `next${process.env.NEXT_PRIVATE_TEST_VERSION ? `@${process.env.NEXT_PRIVATE_TEST_VERSION}` : ''}`];
+const branch = examplePath ? `${_branch}/${file.join('/')}`.replace(new RegExp(`/${filePath}|/$`), '') : _branch;
+filter: (p) => p.startsWith(`${name}-${branch.replace(/\//g, '-')}${filePath ? `/${filePath}/` : '/'}`),
+return typeof err === 'object' && err !== null && typeof (err as { message?: unknown }).message === 'string';
+type ModuleHotStatus = 'idle' | 'check' | 'prepare' | 'ready' | 'dispose' | 'apply' | 'abort' | 'fail';
+export type FileSizeSuffix = `${'k' | 'K' | 'm' | 'M' | 'g' | 'G' | 't' | 'T' | 'p' | 'P'}${'b' | 'B'}`;
+export type GetStaticPropsResult<Props> = { props: Props; revalidate?: number | boolean } | { redirect: Redirect; revalidate?: number | boolean } | { notFound: true; revalidate?: number | boolean };
+export type GetStaticProps<Props extends { [key: string]: any } = { [key: string]: any }, Params extends ParsedUrlQuery = ParsedUrlQuery, Preview extends PreviewData = PreviewData> = (
+export type GetServerSideProps<Props extends { [key: string]: any } = { [key: string]: any }, Params extends ParsedUrlQuery = ParsedUrlQuery, Preview extends PreviewData = PreviewData> = (
+getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T;
+[K in keyof T]: T[K] extends string ? never : T[K] extends Handler ? ReturnType<T[K]> : T[K] extends [Handler] ? Array<ReturnType<T[K][0]>> : never;
+expect(getWordsAndWhitespaces(text)).toEqual(['  \n\n', 'hello', ' ', 'world', ' ', 'https://nextjs.org/', '\n', 'https://nextjs.org/']);
+const modulePath = webpackFile?.replace(/^(webpack-internal:\/\/\/|file:\/\/)(\(.*\)\/)?/, '');
+return typeof error?.digest === 'string' && error.digest.startsWith(REDIRECT_ERROR_CODE + ';') && error.digest.length > REDIRECT_ERROR_CODE.length + 1;
+return mod.indexOf(`pages${curPage.startsWith('/') ? curPage : `/${curPage}`}`) !== -1 || mod.indexOf(`pages${curPage.startsWith('/') ? curPage : `/${curPage}`}`.replace(/\//g, '\\')) !== -1;
+const pathname = (Router.pathname === '/404' || Router.pathname === '/_error') && notFoundSrcPage ? notFoundSrcPage : Router.pathname;
+const stackTrace = err && ((err.stack && err.stack.split('\n').slice(0, 5).join('\n')) || err.message || err + '');
+? (importTraceNote || '\n\nImport trace for requested module:') + filteredModuleTrace.map((trace: any) => `\n${trace.moduleName}`).join('')
+message = message.replace(/SyntaxError\s+\((\d+):(\d+)\)\s*(.+?)\n/g, `${friendlySyntaxErrorLabel} $3 ($1:$2)\n`);
+message = message.replace(/^.*export '(.+?)' was not found in '(.+?)'.*$/gm, `Attempted import error: '$1' is not exported from '$2'.`);
+message = message.replace(/^.*export 'default' \(imported as '(.+?)'\) was not found in '(.+?)'.*$/gm, `Attempted import error: '$2' does not contain a default export (imported as '$1').`);
+message = message.replace(/^.*export '(.+?)' \(imported as '(.+?)'\) was not found in '(.+?)'.*$/gm, `Attempted import error: '$1' is not exported from '$3' (imported as '$2').`);
+lines = [lines[0], lines[1].replace('Error: ', '').replace('Module not found: Cannot find file:', 'Cannot find file:'), ...lines.slice(2)];
+message = message.replace(/^\s*at\s((?!webpack:).)*:\d+:\d+[\s)]*(\n|$)/gm, ''); // at ... ...:x:y
+lines = (lines as string[]).filter((line, index, arr) => index === 0 || line.trim() !== '' || line.trim() !== arr[index - 1].trim());
+const isHydrateError = args.some((arg) => typeof arg === 'string' && arg.match(/(hydration|content does not match|did not match)/i));
+return locale && (pathLower.startsWith(`/${localeLower}/`) || pathLower === `/${localeLower}`) ? `${pathname.length === locale.length + 1 ? `/` : ``}${path.slice(locale.length + 1)}` : path;
+speed: 'connection' in navigator && (navigator as any)['connection'] && 'effectiveType' in (navigator as any)['connection'] ? ((navigator as any)['connection']['effectiveType'] as string) : '',
+if (type === 'script' && (attr === 'async' || attr === 'defer' || attr === 'noModule')) {
+const feComponentTransfer = blurDataURL.startsWith('data:image/jpeg') ? `%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='1 1'/%3E%3C/feComponentTransfer%3E%` : '';
+return `%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 ${svgWidth} ${svgHeight}'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='${std}'/%3E${feComponentTransfer}%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='${blurDataURL}'/%3E%3C/svg%3E`;
+return `%3Csvg xmlns='http%3A//www.w3.org/2000/svg'%3E%3Cimage style='filter:blur(20px)' preserveAspectRatio='${preserveAspectRatio}' x='0' y='0' height='100%25' width='100%25' href='${blurDataURL}'/%3E%3C/svg%3E`;
+return segment.replace(new RegExp(`([/#?]${escapeEncoded ? '|%(2f|23|3f)' : ''})`, 'gi'), (char: string) => encodeURIComponent(char));
+params[slugName] = ~m.indexOf('/') ? m.split('/').map((entry) => decode(entry)) : g.repeat ? [decode(m)] : decode(m);
+pathname = addPathSuffix(addPathPrefix(pathname, `/_next/data/${info.buildId}`), info.pathname === '/' ? 'index.json' : '.json');
+if (locale && locale !== defaultLocale && (ignorePrefix || (!pathHasPrefix(path.toLowerCase(), `/${locale.toLowerCase()}`) && !pathHasPrefix(path.toLowerCase(), '/api')))) {
+const routes = childrenPaths.map((c) => this.children.get(c)!._smoosh(`${prefix}${c}/`)).reduce((prev, curr) => [...prev, ...curr], []);
+throw new Error(`You cannot define a route with the same specificity as a optional catch-all route ("${r}" and "${r}[[...${this.optionalRestSlugName}]]").`);
+routes.push(...this.children.get('[[...]]')!._smoosh(`${prefix}[[...${this.optionalRestSlugName}]]/`));
+throw new Error(`You cannot use both an required and optional catch-all route at the same level ("[...${this.restSlugName}]" and "${urlPaths[0]}" ).`);
+throw new Error(`You cannot use both an optional and required catch-all route at the same level ("[[...${this.optionalRestSlugName}]]" and "${urlPaths[0]}").`);
+const path = route === '/' ? '/index' : /^\/index(\/|$)/.test(route) ? `/index${route}` : `${route}`;
+if (typeof param === 'string' || (typeof param === 'number' && !isNaN(param)) || typeof param === 'boolean') {
+export function matchHas(req: BaseNextRequest | IncomingMessage, query: Params, has: RouteHas[] = [], missing: RouteHas[] = []): false | Params {
+throw new Error(`To use a multi-match in the destination you must add \`*\` at the end of the param name to signify it should repeat. https://nextjs.org/docs/messages/invalid-multi-match`);
+const resolvedBase = base ? new URL(base, globalBase) : url.startsWith('.') ? new URL(typeof window === 'undefined' ? 'http://n' : window.location.href) : globalBase;
+return repeat ? (optional ? `(?:/(?<${cleanedKey}>.+?))?` : `/(?<${cleanedKey}>.+?)`) : `/(?<${cleanedKey}>[^/]+?)`;
+export const urlObjectKeys = ['auth', 'hash', 'host', 'hostname', 'href', 'path', 'pathname', 'port', 'protocol', 'query', 'search', 'slashes'];
+console.error(`Invalid href '${urlAsString}' passed to next/router in page: '${router.pathname}'. Repeated forward-slashes (//) or backslashes \\ are not valid in the href.`);
+export type HistoryState = null | { __NA: true; __N?: false } | { __N: false; __NA?: false } | ({ __NA?: false; __N: true; key: string } & NextHistoryState);
+if (matchedPath && !rewriteTarget && !matchedPath.includes('__next_data_catchall') && !matchedPath.includes('/_error') && !matchedPath.includes('/404')) {
+export type NextRouter = BaseRouter & Pick<Router, 'push' | 'replace' | 'reload' | 'back' | 'forward' | 'prefetch' | 'beforePopState' | 'events' | 'isFallback' | 'isReady' | 'isPreview'>;
+headers: Object.assign({} as HeadersInit, isPrefetch ? { purpose: 'prefetch' } : {}, isPrefetch && hasMiddleware ? { 'x-middleware-prefetch': '1' } : {}),
+if (!persistCache || process.env.NODE_ENV !== 'production' || data.response.headers.get('x-middleware-cache') === 'no-cache') {
+throw new Error(`Invalid href: "${url}" and as: "${as}", received relative href and external as` + `\nSee more info: https://nextjs.org/docs/messages/invalid-relative-url-external-as`);
+? `The provided \`href\` (${url}) value is missing query values (${missingParams.join(', ')}) to be interpolated properly. `
+if (isQueryUpdating && this.pathname === '/_error' && self.__NEXT_DATA__.props?.pageProps?.statusCode === 500 && routeInfo.props?.pageProps) {
+if (this.pathname === '/_error' && self.__NEXT_DATA__.props?.pageProps?.statusCode === 500 && routeInfo.props?.pageProps) {
+const rewritesResult = resolveRewrites(addBasePath(addLocale(asPath, this.locale), true), pages, rewrites, parsed.query, (p: string) => resolveDynamicRoute(p, pages), this.locales);
+export async function loadGetInitialProps<C extends BaseContext, IP = {}, P = {}>(App: NextComponentType<C, IP, P>, ctx: C): Promise<IP> {
+export const ST = SP && (['mark', 'measure', 'getEntriesByName'] as const).every((method) => typeof performance[method] === 'function');
+5_016_456_510_113_118_655_434_598_811_035_278_955_030_765_345_404_790_744_303_017_523_831_112_055_108_147_451_509_157_692_220_295_382_716_162_651_878_526_895_249_385_292_291_816_524_375_083_746_691_371_804_094_271_873_160_484_737_966_720_260_389_217_684_476_157_468_082_573,
+9_659_303_129_496_669_498_009_435_400_716_310_466_090_418_745_672_637_896_108_374_329_434_462_657_994_582_932_197_716_438_449_813_051_892_206_539_805_784_495_328_239_340_083_876_191_928_701_583_869_517_785,
+14_197_795_064_947_621_068_722_070_641_403_218_320_880_622_795_441_933_960_878_474_914_617_582_723_252_296_732_303_717_722_150_864_096_521_202_355_549_365_628_174_669_108_571_814_760_471_015_076_148_029_755_969_804_077_320_157_692_458_563_003_215_304_957_150_157_403_644_460_363_550_505_412_711_285_966_361_610_267_868_082_893_823_963_790_439_336_411_086_884_584_107_735_010_676_915,
+if (hostname === domainHostname || detectedLocale === item.defaultLocale.toLowerCase() || item.locales?.some((locale) => locale.toLowerCase() === detectedLocale)) {
+const normalized = ensureLeadingSlash(/^\/index(\/|$)/.test(page) && !isDynamicRoute(page) ? `/index${page}` : page === '/' ? '/index' : page);
+return _page.startsWith('/index/') && !isDynamicRoute(_page) ? _page.slice(6) : _page !== '/index' ? _page : '/';
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+export function getHostname(parsed: { hostname?: string | null }, headers?: { [key: string]: string | string[] | undefined }) {
+throw new Error(`Failed to parse src "${src}" on \`next/image\`, protocol-relative URL (//) must be changed to an absolute URL (http:// or https://)`);
+throw new Error(`Failed to parse src "${src}" on \`next/image\`, if using relative image it must start with a leading slash "/" or be an absolute URL (http:// or https://)`);
+return build(dir, args['--profile'], args['--debug'] || process.env.NEXT_DEBUG_BUILD, !args['--no-lint'], args['--no-mangling'], args['--experimental-app-only']).catch((err) => {
+if (isError(err) && (err.code === 'INVALID_RESOLVE_ALIAS' || err.code === 'WEBPACK_ERRORS' || err.code === 'BUILD_OPTIMIZATION_FAILED' || err.code === 'EDGE_RUNTIME_UNSUPPORTED_API')) {
+const { getPackageVersion, getDependencies } = (await Promise.resolve(require('../lib/get-package-version'))) as typeof import('../lib/get-package-version');
+const [sassVersion, nodeSassVersion] = await Promise.all([getPackageVersion({ cwd: dir, name: 'sass' }), getPackageVersion({ cwd: dir, name: 'node-sass' })]);
+if (dependencies['@next/font'] || (devDependencies['@next/font'] && devDependencies['@next/font'] !== 'workspace:*')) {
+? '\x1B[38;2;0;0;255m>\x1B[39m\x1B[38;2;23;0;232m>\x1B[39m\x1B[38;2;46;0;209m>\x1B[39m \x1B[38;2;70;0;185mT\x1B[39m\x1B[38;2;93;0;162mU\x1B[39m\x1B[38;2;116;0;139mR\x1B[39m\x1B[38;2;139;0;116mB\x1B[39m\x1B[38;2;162;0;93mO\x1B[39m\x1B[38;2;185;0;70mP\x1B[39m\x1B[38;2;209;0;46mA\x1B[39m\x1B[38;2;232;0;23mC\x1B[39m\x1B[38;2;255;0;0mK\x1B[39m'
+let thankYouMsg = `Thank you for trying Next.js v13 with Turbopack! As a reminder,\nTurbopack is currently in alpha and not yet ready for production.\nWe appreciate your ongoing support as we work to make it ready\nfor everyone.\n`;
+unsupportedParts += `\n- Babel detected (${chalk.cyan(babelrc)})\n  ${chalk.dim(`Babel is not yet supported. To use Turbopack at the moment,\n  you'll need to remove your usage of Babel.`)}`;
+.join('')}  To use Turbopack, remove the following configuration options:\n${nonSupportedConfig.map((name) => `    - ${chalk.red(name)}\n`)}`,
+${chalk.bold.cyan(`${pkgManager === 'npm' ? 'npx create-next-app' : `${pkgManager} create next-app`} --example with-turbopack with-turbopack-app`)}\n  cd with-turbopack-app\n  ${pkgManager} run dev
+const debugPortStr = process.execArgv.find((localArg) => localArg.startsWith('--inspect') || localArg.startsWith('--inspect-brk'))?.split('=')[1];
+warn(`the --inspect${isDebuggingWithBrk ? '-brk' : ''} option was detected, the Next.js server should be inspected at port ${debugPort + 1}.`);
+extensions: args['--ext'] ?? ['.js', '.mjs', '.cjs', '.jsx', '.ts', '.mts', '.cts', '.tsx'],
+-d, --dir Array                Include directory, or directories, to run ESLint - default: 'pages', 'components', and 'lib'
+--ext [String]                 Specify JavaScript file extensions - default: .js, .mjs, .cjs, .jsx, .ts, .mts, .cts, .tsx
+--strict                       Creates an .eslintrc.json file using the Next.js strict configuration (only possible if no .eslintrc.json file is present)
+const path = (parentPath ? parentPath + '/' : '') + (parallelRouteKey !== 'children' && !segment.startsWith('@') ? parallelRouteKey + '/' : '') + (segment === '' ? 'page' : segment);
+async ensurePage({ page, clientOnly, appPaths = null, match }: { page: string; clientOnly: boolean; appPaths?: ReadonlyArray<string> | null; match?: RouteMatch }): Promise<void> {
+staleness: 'fresh' | 'stale-patch' | 'stale-minor' | 'stale-major' | 'stale-prerelease' | 'newer-than-npm' | 'unknown';
+.filter((line: string) => !/next[\\/]dist[\\/]compiled/.test(line) && !/node_modules[\\/]/.test(line) && !/node:internal[\\/]/.test(line))
+import { PHASE_DEVELOPMENT_SERVER, CLIENT_STATIC_FILES_PATH, DEV_CLIENT_PAGES_MANIFEST, DEV_MIDDLEWARE_MANIFEST, COMPILER_NAMES, PAGES_MANIFEST, APP_PATHS_MANIFEST } from '../../shared/lib/constants';
+const envFiles = ['.env.development.local', '.env.local', '.env.development', '.env'].map((file) => pathJoin(this.dir, file));
+Log.error(`Conflicting app and page file${numConflicting === 1 ? ' was' : 's were'} found, please remove the conflicting files to continue:`);
+async runEdgeFunction(params: { req: BaseNextRequest; res: BaseNextResponse; query: ParsedUrlQuery; params: Params | undefined; page: string; appPaths: string[] | null; isAppPath: boolean }) {
+const frame = frames.find(({ file }) => !file?.startsWith('eval') && !file?.includes('web/adapter') && !file?.includes('sandbox/context') && !file?.includes('<anonymous>'))!;
+Log[type === 'warning' ? 'warn' : 'error'](`${file} (${lineNumber}:${column}) @ ${methodName}`);
+export async function renderScriptError(res: ServerResponse, error: Error, { verbose = true } = {}): Promise<{ finished: true | undefined }> {
+.traceAsyncFn(() => Promise.all([findPageFile(this.pagesDir!, '/_app', pageExtensions, false), findPageFile(this.pagesDir!, '/_document', pageExtensions, false)]));
+public async ensurePage({ page, clientOnly, appPaths, match }: { page: string; clientOnly: boolean; appPaths?: string[] | null; match?: RouteMatch }): Promise<void> {
+[DocumentMod, AppMod] = await Promise.all([Promise.resolve().then(() => requirePage('/_document', distDir, false)), Promise.resolve().then(() => requirePage('/_app', distDir, false))]);
+const keysToInclude: (keyof NextQueryMetadata)[] = ['__nextDefaultLocale', '__nextFallback', '__nextLocale', '__nextSsgPath', '_nextBubbleNoFallback', '__nextDataReq'];
+controller.enqueue(encodeText(`<script>self.__next_root_layout_missing_tags_error=${JSON.stringify({ missingTags, assetPrefix: assetPrefix ?? '', tree: getTree() })}</script>`));
+if (!('isNextDevCommand' in options) && process.env.NODE_ENV && !['production', 'development', 'test'].includes(process.env.NODE_ENV)) {
+const { dir = '.', quiet = false, conf, dev = false, minimalMode = false, customServer = true, hostname, port } = options;
+val = [...(middlewareValue || []), ...(typeof val === 'string' ? [val] : Array.isArray(val) ? val : [])];
+parsedUrl.pathname = `${this.nextConfig.basePath || ''}${matchedPath === '/' && this.nextConfig.basePath ? '' : matchedPath}`;
+if ((err && typeof err === 'object' && err.code === 'ERR_INVALID_URL') || err instanceof DecodeError || err instanceof NormalizeError) {
+console.warn(`Cannot render page with path "${pathname}", did you mean "/${pathname}"?. See more info here: https://nextjs.org/docs/messages/render-no-starting-slash`);
+if (!internalRender && !this.minimalMode && !query.__nextDataReq && (req.url?.match(/^\/_next\//) || (this.hasStaticDir && req.url!.match(/^\/static\//)))) {
+let isDataReq = !!(query.__nextDataReq || (req.headers['x-nextjs-data'] && (this.serverOptions as any).webServerConfig)) && (isSSG || hasServerProps);
+if (!is404Page && !is500Page && pathname !== '/_error' && req.method !== 'HEAD' && req.method !== 'GET' && (typeof components.Component === 'string' || isSSG)) {
+: `${locale ? `/${locale}` : ''}${(pathname === '/' || resolvedUrlPathname === '/') && locale ? '' : resolvedUrlPathname}${query.amp ? '.amp' : ''}`;
+ssgCacheKey = `${locale ? `/${locale}` : ''}${pathname}${query.amp ? '.amp' : ''}`;
+throw new Error('invariant: Expected pageData to be a string for app data request but received ' + typeof cachedData.pageData + '. This is a bug in Next.js.');
+if (this.router.catchAllMiddleware[0] && !!ctx.req.headers['x-nextjs-data'] && (!res.statusCode || res.statusCode === 200 || res.statusCode === 404)) {
+public async renderError(err: Error | null, req: BaseNextRequest, res: BaseNextResponse, pathname: string, query: NextParsedUrlQuery = {}, setHeaders = true): Promise<void> {
+private async renderErrorImpl(err: Error | null, req: BaseNextRequest, res: BaseNextResponse, pathname: string, query: NextParsedUrlQuery = {}, setHeaders = true): Promise<void> {
+if (process.env.NODE_ENV !== 'production' && !using404Page && (await this.hasPage('/_error')) && !(await this.hasPage('/404'))) {
+if ([0x52, 0x49, 0x46, 0x46, 0, 0, 0, 0, 0x57, 0x45, 0x42, 0x50].every((b, i) => !b || buffer[i] === b)) {
+if ([0, 0, 0, 0, 0x66, 0x74, 0x79, 0x70, 0x61, 0x76, 0x69, 0x66].every((b, i) => !b || buffer[i] === b)) {
+const { deviceSizes = [], imageSizes = [], domains = [], minimumCacheTTL = 60, formats = ['image/webp'] } = imageData;
+const { resBuffers, req: mockReq, res: mockRes, streamPromise: isStreamFinished } = mockRequest(href, _req.headers, _req.method || 'GET', _req.connection);
+res.setHeader('Cache-Control', isStatic ? 'public, max-age=315360000, immutable' : `public, max-age=${isDev ? 0 : maxAge}, must-revalidate`);
+!this.minimalMode && fs.existsSync(join(this.distDir, 'static')) ? recursiveReadDirSync(join(this.distDir, 'static')).map((f) => join('.', relative(this.dir, this.distDir), 'static', f)) : [];
+paths.unshift(...paths.map((path) => `/${query.__nextLocale}${path === '/' ? '' : path}`));
+public async renderErrorToHTML(err: Error | null, req: BaseNextRequest | IncomingMessage, res: BaseNextResponse | ServerResponse, pathname: string, query?: ParsedUrlQuery): Promise<string | null> {
+protected generateRewrites({ restrictedRedirectPaths }: { restrictedRedirectPaths: string[] }): { beforeFiles: Route[]; afterFiles: Route[]; fallback: Route[] } {
+url = `${getRequestMeta(params.request, '_protocol')}://${this.hostname}:${this.port}${locale ? `/${locale}` : ''}${params.parsed.pathname}${query ? `?${query}` : ''}`;
+if (!result.response.headers.has('x-middleware-rewrite') && !result.response.headers.has('x-middleware-next') && !result.response.headers.has('Location')) {
+const agent = ({ protocol }: any) => (protocol === 'http:' ? (global as any).__NEXT_HTTP_AGENT : (global as any).__NEXT_HTTPS_AGENT);
+appDirRegExp = new RegExp('^' + (projectDir + '(/src)?/app').replace(/[\\/]/g, '[\\/]'));
+const insertText = e.kind === ts.ScriptElementKind.memberVariableElement && /^[a-zA-Z0-9_]+$/.test(e.name) ? e.name + ': ' : e.name;
+(ts.isNumericLiteral((value as any).operand.kind) || (ts.isIdentifier((value as any).operand.kind) && (value as any).operand.kind.getText() === 'Infinity'))) ||
+export type PayloadOptions = { private: true } | { private: boolean; stateful: true } | { private: boolean; stateful: false; revalidate: number | false };
+res.setHeader('Content-Type', resultContentType ? resultContentType : type === 'rsc' ? RSC_CONTENT_TYPE_HEADER : type === 'json' ? 'application/json' : 'text/html; charset=utf-8');
+read: jest.fn(() => [...extensions.map((ext) => `${dir}/some/route.${ext}`), ...extensions.map((ext) => `${dir}/api/other.${ext}`), ...files]),
+read: jest.fn(() => [...extensions.map((ext) => `${dir}/some/page.${ext}`), ...extensions.map((ext) => `${dir}/api/other.${ext}`), ...files]),
+read: jest.fn(() => [...extensions.map((ext) => `${dir}/api/other/page.${ext}`), ...files]),
+const results = await Promise.all([cached.read('<root>/pages'), cached.read('<root>/pages'), cached.read('<root>/app'), cached.read('<root>/app')]);
+read: jest.fn(() => [...extensions.map((ext) => `${dir}/some/other/page.${ext}`), ...extensions.map((ext) => `${dir}/some/other/route.${ext}`), `${dir}/some/api/route.ts`, ...files]),
+const body: BodyInit | null | undefined = req.method !== 'GET' && req.method !== 'HEAD' && req.body ? req.body : null;
+Log.error(`Detected lowercase method '${invalidMethodName}' in '${resolvedPagePath}'. Export the uppercase '${invalidMethodName.toUpperCase()}' method name to fix this error.`);
+throw new Error('NextResponse.next() was used in a app route handler, this is not supported. See here for more info: https://nextjs.org/docs/messages/next-response-next-in-app-route-handler');
+Log.warn(`Duplicate page detected. ${matchers.map((matcher) => chalk.cyan(path.relative(this.dir, matcher.definition.filename))).join(' and ')} resolve to ${chalk.cyan(pathname)}`);
+result = result.replace('</head>', `<style data-href="${url}"${nonceStr}${dataAttr}>${fontContent}</style></head>`);
+const escapedUrl = url.replace(/&/g, '&amp;').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+export function getCustomRoute(params: { rule: Rewrite | Redirect | Header; type: RouteType; restrictedRedirectPaths: string[] }): (Route & Rewrite) | (Route & Header) | (Route & Rewrite) {
+regexModifier: !(rule as any).internal ? (regex: string) => modifyRouteRegex(regex, type === 'redirect' ? restrictedRedirectPaths : undefined) : undefined,
+const flush = typeof (res as any).flush === 'function' ? () => (res as any).flush() : () => {};
+...pick(input, ['method', 'body', 'cache', 'credentials', 'integrity', 'keepalive', 'mode', 'redirect', 'referrer', 'referrerPolicy', 'signal']),
+throw new Error(`URL is malformed "${String(url)}". Please use only absolute URLs - https://nextjs.org/docs/messages/middleware-relative-urls`, { cause: error });
+const REGEX_LOCALHOST_HOSTNAME = /(?!^https?:\/\/)(127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}|::1|localhost)/;
+logLevel?: 'bug' | 'fatal' | 'error' | 'warning' | 'hint' | 'note' | 'suggestions' | 'info';
+const key = Object.entries(supportedFormats).find(([, { detectors }]) => detectors.some((detector) => detector.exec(firstChunkString)))?.[0] as EncoderKey | undefined;
+type ResizeOpts = { image: ImageData } & ({ width: number; height?: never } | { height: number; width?: never } | { height: number; width: number });
+} & ({ width: number; height?: never } | { height: number; width?: never } | { width: number; height: number });
+const requestInputFields = ['cache', 'credentials', 'headers', 'integrity', 'keepalive', 'method', 'mode', 'redirect', 'referrer', 'referrerPolicy', 'signal', 'window', 'duplex'];
+const { encode } = require('../../shared/lib/bloom-filter/base64-arraybuffer') as typeof import('../../shared/lib/bloom-filter/base64-arraybuffer');
+const { decode } = require('../../shared/lib/bloom-filter/base64-arraybuffer') as typeof import('../../shared/lib/bloom-filter/base64-arraybuffer');
+warn(`Duplicate page detected. ${chalk.cyan(join('pages', existingPath))} and ${chalk.cyan(join('pages', others[0]))} both resolve to ${chalk.cyan(normalizedPagePath)}.`);
+return new RegExp(`(^page|[\\\\/]page|^route|[\\\\/]route)\\.(?:${pageExtensions.join('|')})$`).test(filePath);
+trace<T>(name: SpanNames, options: TracerSpanOptions, fn: (span: Span, done?: (error?: Error) => any) => Promise<T>): Promise<T>;
+wrap<T = (...args: Array<any>) => any>(name: SpanNames, options: (...args: any[]) => TracerSpanOptions, fn: T): T;
+public trace<T>(name: SpanNames, fn: (span: Span, done?: (error?: Error) => any) => Promise<T>): Promise<T>;
+public trace<T>(name: SpanNames, options: TracerSpanOptions, fn: (span: Span, done?: (error?: Error) => any) => Promise<T>): Promise<T>;
+public trace<T>(name: SpanNames, options: TracerSpanOptions, fn: (span: Span, done?: (error?: Error) => any) => T): T;
+public wrap<T = (...args: Array<any>) => any>(name: SpanNames, options: (...args: any[]) => TracerSpanOptions, fn: T): T;
+type SpanNames = `${BaseServerSpan}` | `${LoadComponentsSpan}` | `${NextServerSpan}` | `${StartServerSpan}` | `${NextNodeServerSpan}` | `${RenderSpan}` | `${RouterSpan}` | `${AppRenderSpan}`;
+this.cacheEndpoint = `https://${ctx._requestHeaders['x-vercel-sc-host']}${ctx._requestHeaders['x-vercel-sc-basepath'] || ''}`;
+lastModified: cacheState === 'stale' ? Date.now() + CACHE_ONE_YEAR : Date.now() - parseInt(age || '0', 10) * 1000,
+const { getPathMatch } = require('../../shared/lib/router/utils/path-match') as typeof import('../../shared/lib/router/utils/path-match');
+const { default: loadCustomRoutes } = require('../../lib/load-custom-routes') as typeof import('../../lib/load-custom-routes');
+route.type === 'rewrite' || route.type === 'redirect' || route.type === 'header' || route.name === 'catchall route' || route.name === 'middleware catchall' || route.name?.includes('check');
+Log.warn(`\`${oldKey}\` has been moved out of \`experimental\`` + (newKey.includes('.') ? ` and into \`${newKey}\`` : '') + `. Please update your ${configFileName} file accordingly.`);
+throw new Error(`Specified pageExtensions is not an array of strings, found "${ext}" of type "${typeof ext}". Please update this config or remove it.`);
+if ((images.loader !== 'default' && images.path[images.path.length - 1] !== '/') || result.trailingSlash) {
+console.warn(`Both ${item.domain} and ${domainItem.domain} configured the locale (${locale}) but only one can. Remove it from one i18n.domains config to continue`);
+.join('\n')}\n\ndomains value must follow format { domain: 'example.fr', defaultLocale: 'fr', locales: ['fr'] }.\nSee more info here: https://nextjs.org/docs/messages/invalid-i18n-config`,
+throw new Error(`The "target" property is no longer supported in ${configFileName}.\n` + 'See more info here https://nextjs.org/docs/messages/deprecated-target-config');
+const nonJsPath = findUp.sync([`${configBaseName}.jsx`, `${configBaseName}.ts`, `${configBaseName}.tsx`, `${configBaseName}.json`], { cwd: dir });
+const allowedRevalidateHeaderKeys = [...(context.allowedRevalidateHeaderKeys || []), ...(context.trustHostHeader ? ['cookie', 'x-vercel-protection-bypass'] : [])];
+console.warn(`API response for ${req.url} exceeds ${bytes.format(maxContentLength)}. API Routes are meant to respond quickly. https://nextjs.org/docs/messages/api-routes-response-size-limit`);
+throw new Error(`Invalid redirect arguments. Please use a single argument URL, e.g. res.redirect('/destination') or use a status code and URL, e.g. res.redirect(307, '/destination').`);
+console.warn(`The module '${dependency}' was not found. Next.js requires that you include it in 'dependencies' of your 'package.json'. To add it, run 'npm install ${dependency}'`);
+if (args['--inspect']) throw new Error(`--inspect flag is deprecated. Use env variable NODE_OPTIONS instead: NODE_OPTIONS='--inspect' next ${command}`);
+const shouldWarnCommands = process.env.NODE_ENV === 'development' ? ['start', 'build'] : process.env.NODE_ENV === 'production' ? ['dev'] : [];
+const reportToLocalHost = (name: string, duration: number, timestamp: number, id: number, parentId?: number, attrs?: Object, startTime?: number) => {
+const result = webpackCloseSpan.traceChild('webpack-generate-error-stats').traceFn(() => generateStats({ errors: [], warnings: [], stats }, stats));
+modules: (clientWasLoading ? client.modules : 0) + (serverWasLoading ? server.modules : 0) + (edgeServerWasLoading ? edgeServer?.modules || 0 : 0),
+const warnings = [...(client.warnings || []), ...(server.warnings || []), ...(edgeServer.warnings || [])].concat(formatAmpMessages(amp) || []);
+if (([...new Set([...Object.keys(lastStore), ...Object.keys(nextStore)])] as Array<keyof OutputState>).every((key) => Object.is(lastStore[key], nextStore[key]))) {
+console.log(`AMP bind syntax [${prop}]='' is not supported in JSX, use 'data-amp-bind-${prop}' instead. https://nextjs.org/docs/messages/amp-bind-jsx-alt`);
+warn(`Duplicate page detected. ${chalk.cyan(join('pages', previousPages[pageKey]))} and ${chalk.cyan(join('pages', pagePath))} both resolve to ${chalk.cyan(pageKey)}.`);
+result[pageKey] = normalizePathSep(join(pagesType === 'pages' ? PAGES_DIR_ALIAS : pagesType === 'app' ? APP_DIR_ALIAS : ROOT_DIR_ALIAS, pagePath));
+if (params.page === '/_app' || params.page === '/_error' || params.page === '/404' || params.page === '/500') {
+const getEntryHandler = (mappings: Record<string, string>, pagesType: 'app' | 'pages' | 'root') => async (page: string) => {
+const serverBundlePath = pagesType === 'pages' ? posix.join('pages', bundleFile) : pagesType === 'app' ? posix.join('app', bundleFile) : bundleFile.slice(1);
+const isAppLayer = hasAppDir && (name === CLIENT_STATIC_FILES_RUNTIME_MAIN_APP || name === APP_CLIENT_INTERNALS || name.startsWith('app/'));
+export async function generateBuildId(generate: () => string | null | Promise<string | null>, fallback: () => string): Promise<string> {
+export default function createSpinner(text: string | { prefixText: string }, options: ora.Options = {}, logFn: (...data: any[]) => void = console.log) {
+[...new Set<string>([...files.pages.each.keys(), ...(files.app?.each.keys() ?? [])])].map(async (f) => {
+.filter((e) => !(e === '/_document' || e === '/_error' || (!hasCustomApp && e === '/_app')))
+messages.push([routerType === 'app' ? 'Route (app)' : 'Route (pages)', 'Size', 'First Load JS'].map((entry) => chalk.underline(entry)) as [string, string, string]);
+const totalDuration = (pageInfo?.pageDuration || 0) + (pageInfo?.ssgPageDurations?.reduce((a, b) => a + (b || 0), 0) || 0);
+const uniqueCssFiles = buildManifest.pages[item]?.filter((file) => file.endsWith('.css') && stats.router[routerType]?.unique.files.includes(file)) || [];
+messages.push([`${contSymbol}   ${innerSymbol} ${getCleanName(file)}`, typeof size === 'number' ? prettyBytes(size) : '', '']);
+messages.push([`  ${innerSymbol} ${cleanName}`, typeof size === 'number' ? prettyBytes(size) : '', '']);
+usedSymbols.has('ISR') && ['', '(ISR)', `incremental static regeneration (uses revalidate in ${chalk.cyan('getStaticProps')})`],
+const printRoutes = (routes: Redirect[] | Rewrite[] | Header[], type: 'Redirects' | 'Rewrites' | 'Headers') => {
+const expectedReturnVal = `Expected: { paths: [], fallback: boolean }\n` + `See here for more info: https://nextjs.org/docs/messages/invalid-getstaticpaths-value`;
+throw new Error(`Invalid \`paths\` value returned from getStaticPaths in ${page}.\n` + `\`paths\` must be an array of strings or objects of shape { params: [key: string]: string }`);
+if (optional && params.hasOwnProperty(validParamKey) && (paramValue === null || paramValue === undefined || (paramValue as any) === false)) {
+throw new Error(`A required parameter (${validParamKey}) was not provided as ${repeat ? 'an array' : 'a string'} in ${appDir ? 'generateStaticParams' : 'getStaticPaths'} for ${page}`);
+.replace(replaced, repeat ? (paramValue as string[]).map((segment) => escapePathDelimiters(segment, true)).join('/') : escapePathDelimiters(paramValue as string, true))
+encodedBuiltPage = encodedBuiltPage.replace(replaced, repeat ? (paramValue as string[]).map(encodeURIComponent).join('/') : encodeURIComponent(paramValue as string)).replace(/(?!^)\/$/, '');
+prerenderPaths.add(`${curLocale ? `/${curLocale}` : ''}${curLocale && builtPage === '/' ? '' : builtPage}`);
+encodedPrerenderPaths.add(`${curLocale ? `/${curLocale}` : ''}${curLocale && encodedBuiltPage === '/' ? '' : encodedBuiltPage}`);
+segmentPath: `/${parentSegments.join('/')}${segment[0] && parentSegments.length > 0 ? '/' : ''}${segment[0]}`,
+throw new Error(`getStaticPaths can only be used with dynamic pages, not '${page}'.` + `\nLearn more: https://nextjs.org/docs/routing/dynamic-routes`);
+throw new Error(`getStaticPaths is required for dynamic SSG pages and is missing for '${page}'.` + `\nRead more: https://nextjs.org/docs/messages/invalid-getstaticpaths-value`);
+conflictingPathsOutput += `path: "${pathItem.path}"${isDynamic ? ` from page: "${pathItem.page}" ` : ' '}`;
+files.push(path.join(folder, `${INSTRUMENTATION_HOOK_FILENAME}.${extension}`), path.join(folder, `src`, `${INSTRUMENTATION_HOOK_FILENAME}.${extension}`));
+if (node.type === 'ExportDeclaration' && node.declaration?.type === 'FunctionDeclaration' && ['getStaticProps', 'getServerSideProps'].includes(node.declaration.identifier?.value)) {
+const values = node.specifiers.map((specifier: any) => specifier.type === 'ExportSpecifier' && specifier.orig?.type === 'Identifier' && specifier.orig?.value);
+source = `/:nextData(_next/data/[^/]{1,})?${source}${isRoot ? `(${nextConfig.i18n ? '|\\.json|' : ''}/?index|/?index\\.json)?` : '(.json)?'}`;
+Log.warn(apiRoute ? `${apiRoute} provided runtime 'experimental-edge'. It can be updated to 'edge' instead.` : `You are using an experimental edge runtime, the API might change.`);
+export async function getPageStaticInfo(params: { nextConfig: Partial<NextConfig>; pageFilePath: string; isDev?: boolean; page?: string; pageType?: 'pages' | 'app' }): Promise<PageStaticInfo> {
+!appDirOnly && pagesDir ? await nextBuildSpan.traceChild('collect-pages').traceAsyncFn(() => recursiveReadDir(pagesDir, new RegExp(`\\.(?:${config.pageExtensions.join('|')})$`))) : [];
+appPaths = await nextBuildSpan.traceChild('collect-app-paths').traceAsyncFn(() => recursiveReadDir(appDir, new RegExp(`^(page|route)\\.(?:${config.pageExtensions.join('|')})$`)));
+Log.error(`Conflicting app and page file${numConflictingAppPaths === 1 ? ' was' : 's were'} found, please remove the conflicting files to continue:`);
+...(config.experimental.sri ? [path.join(SERVER_DIRECTORY, SUBRESOURCE_INTEGRITY_MANIFEST + '.js'), path.join(SERVER_DIRECTORY, SUBRESOURCE_INTEGRITY_MANIFEST + '.json')] : []),
+...(hasInstrumentationHook ? [path.join(SERVER_DIRECTORY, `${INSTRUMENTATION_HOOK_FILENAME}.js`), path.join(SERVER_DIRECTORY, `edge-${INSTRUMENTATION_HOOK_FILENAME}.js`)] : []),
+.filter((f) => !f.includes('/node_modules/') && f.startsWith(turbotraceContextAppDir) && !entriesToTrace.includes(f) && !depModSet.has(f));
+} else if (isDynamic && !hasGenerateStaticParams && (appConfig.dynamic === 'error' || appConfig.dynamic === 'force-static')) {
+chalk.yellow(`You have opted-out of Automatic Static Optimization due to \`getInitialProps\` in \`pages/_app\`. This does not opt-out pages with \`getStaticProps\``),
+const lockFiles: string[] = (await Promise.all(['package-lock.json', 'yarn.lock', 'pnpm-lock.yaml'].map((file) => findUp(file, { cwd: dir })))).filter(Boolean) as any; // TypeScript doesn't like this filter
+for (const page of [...staticPages, ...ssgPages, ...(useStatic404 ? ['/404'] : []), ...(useDefaultStatic500 ? ['/500'] : [])]) {
+dataRouteRegex: isRouteHandler ? null : normalizeRouteRegex(getNamedRouteRegex(dataRoute.replace(/\.rsc$/, '')).re.source.replace(/\(\?:\\\/\)\?\$$/, '\\.rsc$')),
+const moveExportedPage = async (originPage: string, page: string, file: string, isSsg: boolean, ext: 'html' | 'json', additionalSsgFile = false) => {
+dataRouteRegex: normalizeRouteRegex(getNamedRouteRegex(dataRoute.replace(/\.json$/, '')).re.source.replace(/\(\?:\\\/\)\?\$$/, '\\.json$')),
+console.log(chalk.bold.green('Next.js Analytics') + ' is enabled for this production build. ' + "You'll receive a Real Experience Score computed by all of your visitors.");
+t.program([t.variableDeclaration('const', [t.variableDeclarator(t.identifier(STRING_LITERAL_DROP_BUNDLE), t.stringLiteral(`${STRING_LITERAL_DROP_BUNDLE} ${Date.now()}`))])], []),
+t.stringLiteral((state.file.opts.caller?.pagesDir ? relativePath(state.file.opts.caller.pagesDir, state.file.opts.filename) : state.file.opts.filename) + ' -> '),
+const libs = state.opts.lib && (state.opts.lib === true ? ['react', 'preact/hooks'] : [].concat(state.opts.lib));
+const nextDistPath = /(next[\\/]dist[\\/]shared[\\/]lib)|(next[\\/]dist[\\/]client)|(next[\\/]dist[\\/]pages)/;
+const reactRefreshItem = hasReactRefresh ? createConfigItem([require('next/dist/compiled/react-refresh/babel'), { skipEnvCheck: true }], { type: 'plugin' }) : null;
+const disallowExportAllItem = !isServer && isPageFile ? createConfigItem([require('../plugins/next-page-disallow-re-export-all-exports')], { type: 'plugin' }) : null;
+const flags = 0 | (isServer ? 0b0001 : 0) | (isPageFile ? 0b0010 : 0) | (isNextDist ? 0b0100 : 0) | (hasModuleExports ? 0b1000 : 0);
+const isBabelLoader = api.caller((caller: any) => !!caller && (caller.name === 'babel-loader' || caller.name === 'next-babel-turbo-loader'));
+const useJsxRuntime = options['preset-react']?.runtime === 'automatic' || (Boolean(api.caller((caller: any) => !!caller && caller.hasJsxRuntime)) && options['preset-react']?.runtime !== 'classic');
+if ((isServer || isTest) && (!presetEnvConfig.targets || !(typeof presetEnvConfig.targets === 'object' && 'node' in presetEnvConfig.targets))) {
+[isTest && options['styled-jsx'] && options['styled-jsx']['babel-test'] ? require('styled-jsx/babel-test') : require('styled-jsx/babel'), styledJsxOptions(options['styled-jsx'])],
+return `Images ${chalk.bold('cannot')} be imported within ${chalk.cyan('pages/_document.js')}. Please move image imports that need to be displayed on every page into ${chalk.cyan(
+return `Global CSS ${chalk.bold('cannot')} be imported from within ${chalk.bold('node_modules')}.\nRead more: https://nextjs.org/docs/messages/css-npm`;
+return `CSS Modules ${chalk.bold('cannot')} be imported from within ${chalk.bold('node_modules')}.\nRead more: https://nextjs.org/docs/messages/css-modules-npm`;
+return `CSS ${chalk.bold('cannot')} be imported within ${chalk.cyan('pages/_document.js')}. Please move global styles to ${chalk.cyan('pages/_app.js')}.`;
+const googleLoaderOptions = ctx.experimental?.fontLoaders?.find((loaderConfig) => loaderConfig.loader === '@next/font/google' || loaderConfig.loader === 'next/font/google')?.options ?? {};
+use: [require.resolve('../../../loaders/next-flight-css-loader'), ...getCssModuleLoader({ ...ctx, isAppDir: true }, lazyPostCSSInitializer)],
+use: [require.resolve('../../../loaders/next-flight-css-loader'), ...getCssModuleLoader({ ...ctx, isAppDir: true }, lazyPostCSSInitializer, sassPreprocessors)],
+use: [require.resolve('../../../loaders/next-flight-css-loader'), ...getGlobalCssLoader({ ...ctx, isAppDir: true }, lazyPostCSSInitializer)],
+use: [require.resolve('../../../loaders/next-flight-css-loader'), ...getGlobalCssLoader({ ...ctx, isAppDir: true }, lazyPostCSSInitializer, sassPreprocessors)],
+exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/, /\.webpack\[[^\]]+\]$/],
+return `${chalk.red.bold('Error')}: Your PostCSS configuration for '${pluginName}' cannot have ${chalk.bold('null')} configuration.\nTo disable '${pluginName}', pass ${chalk.bold(
+const ignoredRegex = /(?:^|[\\/])(postcss-modules-values|postcss-modules-scope|postcss-modules-extract-imports|postcss-modules-local-by-default|postcss-modules)(?:[\\/]|$)/i;
+throw new Error(`Your custom PostCSS configuration may not export a function. Please export a plain object instead.\n` + 'Read more: https://nextjs.org/docs/messages/postcss-function');
+console.warn(`${chalk.yellow.bold('Warning')}: Your PostCSS configuration defines a field which is not supported (\`${invalidKey}\`). ` + `Please remove this configuration value.`);
+if (typeof pluginName === 'string' && (typeof pluginConfig === 'boolean' || typeof pluginConfig === 'object' || typeof pluginConfig === 'string')) {
+console.error(`${chalk.red.bold('Error')}: An unknown PostCSS plugin was provided (${plugin}).\n` + 'Read more: https://nextjs.org/docs/messages/postcss-shape');
+files.push(...entryFiles.filter((file) => !file.endsWith('.hot-update.js')).map((file) => 'server/' + file));
+((memberExpression.property?.type === 'Literal' && memberExpression.property.value === 'env') || (memberExpression.property?.type === 'Identifier' && memberExpression.property.name === 'env'))
+const pageFilePath = await new Promise((resolve) => resolver.resolve({}, '/', absolutePagePath, {}, (err, path) => resolve(err || path)));
+const hasOGImageGeneration = resource && /[\\/]node_modules[\\/]@vercel[\\/]og[\\/]dist[\\/]index.js$/.test(resource);
+export async function handleWebpackExternalForEdgeRuntime({ request, context, contextInfo, getResolve }: { request: string; context: string; contextInfo: any; getResolve: () => any }) {
+const files = entrypoint.getFiles().filter((file: string) => !file.includes('webpack-runtime') && !file.includes('webpack-api-runtime') && file.endsWith('.js'));
+fetchCache?: 'auto' | 'force-no-store' | 'only-no-store' | 'default-no-store' | 'default-cache' | 'only-cache' | 'force-cache'
+checkFields<Diff<${options.type === 'page' ? 'PageProps' : 'LayoutProps'}, FirstArg<MaybeField<TEntry, 'generateMetadata'>>, 'generateMetadata'>>()
+checkFields<Diff<{ __tag__: 'generateStaticParams', __return_type__: any[] | Promise<any[]> }, { __tag__: 'generateStaticParams', __return_type__: ReturnType<MaybeField<TEntry, 'generateStaticParams'>> }>>()
+type Diff<Base, T extends Base, Message extends string = ''> = 0 extends (1 & T) ? {} : OmitWithTag<T, keyof Base, Message>
+type FirstArg<T extends Function> = T extends (...args: [infer T, any]) => any ? unknown extends T ? any : T : never
+type SecondArg<T extends Function> = T extends (...args: [any, infer T]) => any ? unknown extends T ? any : T : never
+type Negative<T extends Numeric> = T extends Zero ? never : \`\${T}\` extends \`-\${string}\` ? T : never
+const relativeImportPath = path.join(distDirRelative, path.relative(typePath, ''), relativePathToRoot.replace(/\.(js|jsx|ts|tsx|mjs)$/, '')).replace(/\\/g, '/');
+return new Error(`${file} from Terser\n${error.message} [${file}:${error.line},${error.col}]${error.stack ? `\n${error.stack.split('\n').slice(1).join('\n')}` : ''}`);
+...(terserOptions.format ? { format: { beautify: false, ...terserOptions.format } } : { output: { beautify: false, ...terserOptions.output } }),
+const regexScssError = /SassError: (.+)\n\s+on line (\d+) [\s\S]*?>> (.+)\n\s*(-+)\^$/m;
+if (!((err.name === 'CssSyntaxError' || err.name === 'SyntaxError') && (err as any).stack === false && !(err instanceof SyntaxError))) {
+return new SimpleWebpackError(`${chalk.cyan(fileName)}:${chalk.yellow(lineNumber.toString())}:${chalk.yellow(column.toString())}`, chalk.red.bold('Syntax error').concat(`: ${reason}`));
+if (!(typeof input === 'object' && (input?.name === 'ModuleBuildError' || input?.name === 'ModuleNotFoundError') && Boolean(input.module) && isError(input.error))) {
+invalidImportMessage += `\n\nThe error was caused by using 'styled-jsx' in '${importTrace[0]}'. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.`;
+err.message + invalidImportMessage + (importTrace.length > 0 ? `\n\nImport trace for requested module:\n${importTrace.map((mod) => '  ' + mod).join('\n')}` : ''),
+formattedMessage = message.replace(NEXT_RSC_ERR_INVALID_API, `\n\n"$1" is not supported in app/. Read more: https://beta.nextjs.org/docs/data-fetching/fundamentals\n\n`);
+if (input.name !== 'ModuleNotFoundError' && !(input.name === 'ModuleBuildError' && /Error: Can't resolve '.+' in /.test(input.message))) {
+const errorMessage = input.error.message.replace(/ in '.*?'/, '').replace(/Can't resolve '(.*)'/, `Can't resolve '${chalk.green('$1')}'`);
+.filter((name) => name && !/next-(app|middleware|client-pages|flight-(client|server|client-entry))-loader\.js/.test(name) && !/css-loader.+\.js/.test(name));
+let message = chalk.red.bold('Module not found') + `: ${errorMessage}` + '\n' + frame + (frame !== '' ? '\n' : '') + '\nhttps://nextjs.org/docs/messages/module-not-found\n' + importTrace();
+.replace(new RegExp(`[^\\S\\r\\n]*\\(${lineNumber}:${column}\\)[^\\S\\r\\n]*`), '');
+return new SimpleWebpackError(`${chalk.cyan(fileName)}:${chalk.yellow(lineNumber.toString())}:${chalk.yellow(column.toString())}`, chalk.red.bold('Syntax error').concat(`: ${message}`));
+if ((file.endsWith('.js') || file.endsWith('.css')) && file.match(/^static\/(chunks|css)\//)) {
+this.traceHookPair('webpack-compilation-chunk-graph', compilation.hooks.beforeChunks, compilation.hooks.afterChunks, { parentSpan: () => spans.get(compilation) || spans.get(compiler)! });
+this.traceHookPair('webpack-compilation-optimize', compilation.hooks.optimize, compilation.hooks.reviveModules, { parentSpan: () => spans.get(compilation) || spans.get(compiler)! });
+this.traceHookPair('webpack-compilation-hash', compilation.hooks.beforeHash, compilation.hooks.afterHash, { parentSpan: () => spans.get(compilation) || spans.get(compiler)! });
+if (!props.rel || props.rel !== 'stylesheet' || !props.href || !OPTIMIZED_FONT_PROVIDERS.some(({ url }) => props.href.startsWith(url))) {
+fontLoaderTargets.some((fontLoaderTarget) => (typeof fontLoaderTarget === 'string' ? mod.userRequest?.startsWith(`${fontLoaderTarget}?`) : fontLoaderTarget.test(mod.userRequest))),
+const fontFiles: string[] = entrypoint.chunks.flatMap((chunk: any) => [...chunk.auxiliaryFiles]).filter((file: string) => /\.(woff|woff2|eot|ttf|otf)$/.test(file));
+(dev ? mod.loaders.some((item) => item.loader.includes('next-style-loader/index.js')) : mod.loaders.some((item) => item.loader.includes('mini-css-extract-plugin/loader.js'))));
+return requiredChunk.id + ':' + (requiredChunk.name || requiredChunk.id) + (dev ? '' : '-' + requiredChunk.hash);
+manifest[resource.replace(/[\\/]next[\\/]dist[\\/]/, '/next/dist/esm/'.replace(/\//g, path.sep))] = moduleExports;
+function forEachBail<TEntry>(array: TEntry[], iterator: (entry: TEntry, entryCallback: (err?: any, result?: any) => void) => void, callback: (err?: any, result?: any) => void): void {
+resolver.getHook('described-resolve').tapAsync('JsConfigPathsPlugin', (request: any, resolveContext: any, callback: (err?: any, result?: any) => void) => {
+resolver.doResolve(target, obj, `Aliased with tsconfig.json or jsconfig.json ${matchedPatternText} to ${candidate}`, resolveContext, (resolverErr: any, resolverResult: any) => {
+const bundlePath = normalizePathSep(relativeRequest.replace(/\.[^.\\/]+$/, '').replace(/^src[\\/]/, ''));
+modules: this.isEdgeServer ? clientImports.map((importPath) => importPath.replace(/[\\/]next[\\/]dist[\\/]esm[\\/]/, '/next/dist/'.replace(/\//g, path.sep))) : clientImports,
+const NOT_TRACEABLE = ['.wasm', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.ico', '.bmp', '.svg'];
+files: [...new Set([...entryFiles, ...allEntryFiles, ...(this.entryTraces.get(entrypoint.name) || [])])].map((file) => {
+if (isError(e) && (e.code === 'EINVAL' || e.code === 'ENOENT' || e.code === 'UNKNOWN')) {
+if (name[0] === '@' && segments.length > 1) return segments.length > 1 ? segments.slice(0, 2).join('/') : null;
+requestPath = (resContext.descriptionFileRoot + request.slice(getPkgName(request)?.length || 0) + nodePath.sep + 'package.json').replace(/\\/g, '/').replace(/\0/g, '');
+const doResolve = async (request: string, parent: string, job: import('@vercel/nft/out/node-file-trace').Job, isEsmRequested: boolean): Promise<string> => {
+export function traverseModules(compilation: webpack.Compilation, callback: (mod: any, chunk: webpack.Chunk, chunkGroup: typeof compilation.chunkGroups[0], modId: string | number) => any) {
+const css = remove ? '' : obj.media ? '@media ' + obj.media + ' {' + obj.css + '}' : obj.css;
+const insert = typeof options.insert === 'undefined' ? '"head"' : typeof options.insert === 'string' ? JSON.stringify(options.insert) : options.insert.toString();
+.map((request) => (regexCSS.test(request) ? `(() => import(/* webpackMode: "lazy" */ ${JSON.stringify(request)}))` : `import(/* webpackMode: "eager" */ ${JSON.stringify(request)})`))
+warnOnce(`Warning: You're using \`next/head\` inside the \`app\` directory, please migrate to the Metadata API. See https://beta.nextjs.org/docs/api-reference/metadata for more details.`);
+throw new Error(`Cannot render a Client Context Provider on the Server. ` + `Instead, you can export a Client Component wrapper ` + `that itself renders a Client Context Provider.`);
+throw new Error(`Cannot access ${expression} on the server. ` + 'You cannot dot into a client module from a server component. ' + 'You can only pass the imported name through.');
+resolve: (src: string) => promisify(this.resolve)(path.dirname(path.join(this.rootContext, relativeFilePathFromRoot)), src.startsWith('.') ? src : `./${src}`),
+localeDomainRedirect = `http${matchedDomain.http ? '' : 's'}://${matchedDomain.domain}/${localeToCheck === matchedDomain.defaultLocale ? '' : localeToCheck}`;
+export const unstable_getStaticParams = compMod['unstable_getStaticParam' + 's'] || compMod.then && compMod.then(mod => mod['unstable_getStaticParam' + 's'])
+export const unstable_getStaticProps = compMod['unstable_getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['unstable_getStaticProp' + 's'])
+export const unstable_getStaticPaths = compMod['unstable_getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['unstable_getStaticPath' + 's'])
+export const unstable_getServerProps = compMod['unstable_getServerProp' + 's'] || compMod.then && compMod.then(mod => mod['unstable_getServerProp' + 's'])
+export let config = compMod['confi' + 'g'] || (compMod.then && compMod.then(mod => mod['confi' + 'g'])) || {}
+Object.assign({}, getStaticProps ? { ...(parsedUrl.query.amp ? { amp: '1' } : {}) } : parsedUrl.query, nowParams ? nowParams : params, _params, isFallback ? { __nextFallback: 'true' } : {}),
+const EXCLUDED_PATHS = /[\\/](cache[\\/][^\\/]+\.zip[\\/]node_modules|__virtual__)[\\/]/g;
+return names.map((name) => `  '${generateActionId(path, name)}': () => import(/* webpackMode: "eager" */ ${JSON.stringify(path)}).then(mod => mod[${JSON.stringify(name)}]),`).join('\n');
+return `'${file}': [() => import(/* webpackMode: "eager" */ ${JSON.stringify(filePath)}), ${JSON.stringify(filePath)}],`;
+Log.error(`${chalk.bold(pagePath.replace(`${APP_DIR_ALIAS}/`, ''))} doesn't have a root layout. To fix this error, make sure every page has a root layout.`);
+.concat((typeof exception === 'string' && exception) || (exception instanceof Error && [exception.message, (exception as any).stack.split('\n')[1].trim()]) || [])
+throw new Error('source-map information is not available at url() declaration ' + (ORPHAN_CR_REGEX.test(sourceContent) ? '(found orphan CR, try removeCR option)' : '(no orphan CR found)'));
+const URL_STATEMENT_REGEX = /(url\s*\()\s*(?:(['"])((?:(?!\2).)*)(\2)|([^'"](?:(?!\)).)*[^'"]))\s*(\))/g;
+return !!uri && typeof options.root === 'string' && loaderUtils.isUrlRequest(uri, options.root) && (/^\//.test(uri) || path.isAbsolute(uri));
+return (relative[0] === '..' ? absolute.split(path.sep) : ['.'].concat(relative).filter(Boolean)).join('/');
+const pageModPath = `${appDirLoader}${stringifiedPagePath.substring(1, stringifiedPagePath.length - 1)}${isAppDir ? '?__edge_ssr_entry__' : ''}`;
+if (paramsNodes.length === 0 || (paramsNodes[0].type !== 'string' && paramsNodes[0].type !== 'function')) {
+const unescapeRegExp = new RegExp(`\\\\([\\da-f]{1,6}${whitespace}?|(${whitespace})|.)`, 'ig');
+code += `import ${options.modules.exportOnlyLocals ? '' : `${importName}, `}* as ${importName}_NAMED___ from ${url};\n`;
+? `___CSS_LOADER_EXPORT___.push([module.id, ${JSON.stringify(`@import url(${url});`)}${media ? `, ${JSON.stringify(media)}` : ''}]);\n`
+: `___CSS_LOADER_EXPORT___.i(${item.importName}${media ? `, ${JSON.stringify(media)}` : dedupe ? ', ""' : ''}${dedupe ? ', true' : ''});\n`;
+options.modules.namedExport ? `" + ${importName}_NAMED___[${JSON.stringify(camelCase(localName))}] + "` : `" + ${importName}.locals[${JSON.stringify(localName)}] + "`,
+const getUrlOptions = [...(hash ? [`hash: ${JSON.stringify(hash)}`] : []), ...(needQuotes ? 'needQuotes: true' : [])];
+code += options.modules.namedExport ? localsCode : `${options.esModule ? 'export default' : 'module.exports ='} {\n${localsCode}\n};\n`;
+return input.replace(/[_.\- ]+([\p{Alpha}\p{N}_]|$)/gu, (_, p1) => p1.toLocaleUpperCase(options.locale)).replace(/\d+([\p{Alpha}\p{N}_]|$)/gu, (m) => m.toLocaleUpperCase(options.locale));
+module.exports = global.process?.env && typeof global.process?.env === 'object' ? global.process : require('../../compiled/process');
+...(transpiled ? [`/node_modules/(?!.pnpm)(?!(${transpiled})/)`, `/node_modules/.pnpm/(?!(${transpiled.replace(/\//g, '\\+')})@)`] : ['/node_modules/']),
+const BABEL_CONFIG_FILES = ['.babelrc', '.babelrc.json', '.babelrc.js', '.babelrc.mjs', '.babelrc.cjs', 'babel.config.js', 'babel.config.json', 'babel.config.mjs', 'babel.config.cjs'];
+const nodePathList = (process.env.NODE_PATH || '').split(process.platform === 'win32' ? ';' : ':').filter((p) => !!p);
+console.warn(\`An environment variable (\${prop}) that was not provided in the environment was accessed.\nSee more info here: https://nextjs.org/docs/messages/missing-env-value\`)
+[CLIENT_STATIC_FILES_RUNTIME_AMP]: `./` + path.relative(dir, path.join(NEXT_PROJECT_ROOT_DIST_CLIENT, 'dev', 'amp-dev')).replace(/\\/g, '/'),
+[CLIENT_STATIC_FILES_RUNTIME_MAIN]: `./` + path.relative(dir, path.join(NEXT_PROJECT_ROOT_DIST_CLIENT, dev ? `next-dev.js` : 'next.js')).replace(/\\/g, '/'),
+: [`./` + path.relative(dir, path.join(NEXT_PROJECT_ROOT_DIST_CLIENT, 'app-next.js')).replace(/\\/g, '/')],
+extensions: isNodeServer ? ['.js', '.mjs', '.tsx', '.ts', '.jsx', '.json', '.wasm'] : ['.mjs', '.js', '.tsx', '.ts', '.jsx', '.json', '.wasm'],
+const optOutBundlingPackageRegex = new RegExp(`[/\\\\]node_modules[/\\\\](${optOutBundlingPackages.map((p) => p.replace(/\//g, '[/\\\\]')).join('|')})[/\\\\]`);
+const isNextExternal = /next[/\\]dist[/\\](esm[\\/])?(shared|server)[/\\](?!lib[/\\](router[/\\]router|dynamic|app-dynamic|lazy-dynamic|head[^-]))/.test(localRes);
+if (/next[/\\]dist[/\\](esm[\\/])?shared[/\\](?!lib[/\\]router[/\\]router)/.test(res) || /next[/\\]dist[/\\]compiled[/\\].*\.[mc]?js$/.test(res)) {
+) => (resolveContext: string, resolveRequest: string, callback: (err?: Error, result?: string, resolveData?: { descriptionFileData?: { type?: any } }) => void) => void;
+: `static/chunks/${isDevFallback ? 'fallback/' : ''}[name]${dev ? '' : appDir ? '-[chunkhash]' : '-[contenthash]'}.js`,
+chunkFilename: isNodeServer || isEdgeServer ? '[name].js' : `static/chunks/${isDevFallback ? 'fallback/' : ''}${dev ? '[name]' : '[name].[contenthash]'}.js`,
+webpack5Config.module.unsafeCache = (module) => !/[\\/]pages[\\/][^\\/]+(?:$|\?|#)/.test(module.resource);
+webpack5Config.snapshot.managedPaths = [/^(.+?(?:[\\/]\.yarn[\\/]unplugged[\\/][^\\/]+)?[\\/]node_modules[\\/])/];
+webpack5Config.snapshot.immutablePaths = [/^(.+?[\\/]cache[\\/][^\\/]+\.zip[\\/]node_modules[\\/])/];
+const hasCustomSvg = rules.some((rule) => rule && typeof rule === 'object' && rule.loader !== 'next-image-loader' && 'test' in rule && rule.test instanceof RegExp && rule.test.test('.svg'));
+const nextImageRule = rules.find((rule) => rule && typeof rule === 'object' && rule.loader === 'next-image-loader');
+console.warn(`\n@zeit/next-typescript is no longer needed since Next.js has built-in support for TypeScript now. Please remove it from your ${config.configFileName} and your .babelrc\n`);
+const plugins = (nextConfig?.experimental?.swcPlugins ?? []).filter(Array.isArray).map(([name, options]: any) => [require.resolve(name), options]);
+events.forEach(({ eventName, payload }) => console.error(`[telemetry] ` + JSON.stringify({ eventName, payload }, null, 2)));
+const REGEXP_DIRECTORY_DUNDER = /[\\/]__[^\\/]+(?<![\\/]__(?:tests|mocks))__[\\/]/i;
+export function eventBuildCompleted(pagePaths: string[], event: Omit<EventBuildCompleted, 'totalPageCount' | 'hasDunderPages' | 'hasTestPages'>): { eventName: string; payload: EventBuildCompleted } {
+export function eventBuildOptimize(pagePaths: string[], event: Omit<EventBuildOptimized, 'totalPageCount' | 'hasDunderPages' | 'hasTestPages'>): { eventName: string; payload: EventBuildOptimized } {
+const isForTooling = res.options?.presets?.every((e: any) => e?.file?.request === 'next/babel') && res.options?.plugins?.length === 0;
+return findUp([`.${key}rc.json`, `${key}.config.json`, `.${key}rc.js`, `${key}.config.js`, `${key}.config.cjs`], {
+export const PUBLIC_DIR_MIDDLEWARE_CONFLICT = `You can not have a '_next' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-next-folder-conflict`;
+export const GSSP_COMPONENT_MEMBER_ERROR = `can not be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member`;
+export const NON_STANDARD_NODE_ENV = `You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env`;
+export const SSG_FALLBACK_EXPORT_ERROR = `Pages with \`fallback\` enabled in \`getStaticPaths\` can not be exported. See more info here: https://nextjs.org/docs/messages/ssg-fallback-true-export`;
+export type ReferrerEnum = 'no-referrer' | 'origin' | 'no-referrer-when-downgrade' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin';
+[[{ openGraph: { type: 'article', images: 'https://test1.com' } }], { openGraph: { images: [{ url: 'https://test1.com' }] } }],
+[[{ openGraph: { type: 'book', images: 'https://test2.com' } }], { openGraph: { images: [{ url: 'https://test2.com' }] } }],
+[[{ openGraph: { type: 'video.movie', images: 'https://test6.com' } }], { openGraph: { images: [{ url: 'https://test6.com' }] } }],
+expect(resolveTitle({ default: 'title', template: '%s | absolute' }, 'dash %s')).toEqual({ absolute: 'dash title', template: '%s | absolute' });
+expect(resolveTitle({ default: '', template: '%s | absolute' }, 'fake template')).toEqual({ absolute: 'fake template', template: '%s | absolute' });
+const startupImages = appWebApp.startupImage ? resolveAsArrayOrUndefined(appWebApp.startupImage)?.map((item) => (typeof item === 'string' ? { url: item } : item)) : null;
+function resolveUrlValuesOfObject(obj: Record<string, string | URL | null> | null | undefined, metadataBase: ResolvedMetadata['metadataBase']): null | Record<string, string | URL | null> {
+regex = regex.replace(/\^/, `^(?!${restrictedPaths.map((path) => path.replace(/\//g, '\\/')).join('|')})`);
+path ? `Error serializing \`${path}\` returned from \`${method}\` in "${page}".\nReason: ${message}` : `Error serializing props returned from \`${method}\` in "${page}".\nReason: ${message}`,
+throw new SerializableError(page, method, '', `Props must be returned as a plain object from ${method}: \`{ props: { ... } }\` (received: \`${getObjectClassLabel(input)}\`).`);
+throw new SerializableError(page, method, path, `Circular references cannot be expressed in JSON (references: \`${visited.get(value) || '(self)'}\`).`);
+throw new FatalError(chalk.red.bold('Could not parse', chalk.cyan('tsconfig.json') + '.' + ' Please make sure it contains syntactically correct JSON.') + reason);
+export async function runTypeCheck(ts: typeof import('typescript'), baseDir: string, distDir: string, tsConfigPath: string, cacheDir?: string, isAppDirEnabled?: boolean): Promise<TypeCheckResult> {
+const regexIgnoredFile = /[\\/]__(?:tests|mocks)__[\\/]|(?<=[\\/.])(?:spec|test)\.[^\\/]+$/;
+const firstError = allDiagnostics.find((d) => d.category === DiagnosticCategory.Error && Boolean(d.file)) ?? allDiagnostics.find((d) => d.category === DiagnosticCategory.Error);
+const allErrors = allDiagnostics.filter((d) => d.category === DiagnosticCategory.Error).map((d) => '[Test Mode] ' + getFormattedDiagnostic(ts, baseDir, distDir, d, isAppDirEnabled));
+console.error('\n\n===== TS errors =====\n\n' + allErrors.join('\n\n') + '\n\n===== TS errors =====\n\n');
+const warnings = allDiagnostics.filter((d) => d.category === DiagnosticCategory.Warning).map((d) => getFormattedDiagnostic(ts, baseDir, distDir, d, isAppDirEnabled));
+Log.info(`VS Code settings.json has been ${configExists ? 'updated' : 'created'} for Next.js' automatic app types, this file can be added to .gitignore if desired`);
+directives.push('', '// NOTE: This file should not be edited', '// see https://nextjs.org/docs/basic-features/typescript for more information.');
+chalk.bold('If you are not trying to use TypeScript, please remove the ' + chalk.cyan('tsconfig.json') + ' file from your package root (and any TypeScript files in your pages directory).');
+const match = message.match(/Type '"(.+)"' is not assignable to type 'RouteImpl<.+> \| UrlObject'\./) || message.match(/Type '"(.+)"' is not assignable to type 'UrlObject \| RouteImpl<.+>'\./);
+if (typeof relatedMessage === 'string' && relatedMessage.match(/The expected type comes from property 'href' which is declared here on type 'IntrinsicAttributes & /)) {
+return `Invalid \`href\` property of \`Link\`: the route does not exist. If it is intentional, please type it explicitly with \`as Route\`.`;
+message.match(/Type '"(.+)"' is not assignable to type 'RouteImpl<.+> \| UrlObject'\. Did you mean '"(.+)"'?/) ||
+message.match(/Type '"(.+)"' is not assignable to type 'UrlObject \| RouteImpl<.+>'\. Did you mean '"(.+)"'?/);
+return `"${chalk.bold(href)}" is not an existing route. Did you mean "${chalk.bold(suggestion)}" instead? If it is intentional, please type it explicitly with \`as Route\`.`;
+main += `Expected "${chalk.bold(types[2].replace('"__invalid_negative_number__"', 'number (>= 0)'))}", got "${chalk.bold(types[1])}".`;
+const main = `${type} "${chalk.bold(relativeSourceFilepath)}" has an invalid "${chalk.bold(invalidExportFnArg[2])}" export:\n  Type "${chalk.bold(invalidExportFnArg[1])}" is not valid.`;
+const invalidExportFnReturn = messageText.match(/Type '{ __tag__: "(.+)"; __return_type__: (.+); }' does not satisfy/);
+let main = `${type} "${chalk.bold(relativeSourceFilepath)}" has an invalid export:\n  "${chalk.bold(invalidExportFnReturn[2])}" is not a valid ${invalidExportFnReturn[1]} return type:`;
+const main = `${type} "${chalk.bold(relativeSourceFilepath)}" contains an invalid type "${chalk.bold(invalid[1])}" as ${invalid[2]}.`;
+message = chalk.cyan(fileName) + ':' + chalk.yellow(line.toString()) + ':' + chalk.yellow(character.toString()) + '\n' + message;
+if (!('parsedValues' in check ? check.parsedValues?.includes(ev) : 'parsedValue' in check ? check.parsedValue === ev : check.value === ev)) {
+userTsConfig.include = isAppDirEnabled ? ['next-env.d.ts', nextAppTypes, '**/*.ts', '**/*.tsx'] : ['next-env.d.ts', '**/*.ts', '**/*.tsx'];
+chalk.cyan('include') + ' was set to ' + chalk.bold(isAppDirEnabled ? `['next-env.d.ts', '${nextAppTypes}', '**/*.ts', '**/*.tsx']` : `['next-env.d.ts', '**/*.ts', '**/*.tsx']`),
+console.log(chalk.green(`We detected TypeScript in your project and reconfigured your ${chalk.bold('tsconfig.json')} file for you. Strict-mode is set to ${chalk.bold('false')} by default.`) + '\n');
+console.log(`The following suggested values were added to your ${chalk.cyan('tsconfig.json')}. These values ${chalk.bold('can be changed')} to fit your project's needs:\n`);
+return items.map((v, index, { length }) => (index > 0 ? (index === length - 1 ? (length > 2 ? ', and ' : ' and ') : ', ') : '') + v).join('');
+(packageManager === 'yarn' ? 'yarn add --dev' : packageManager === 'pnpm' ? 'pnpm install --save-dev' : 'npm install --save-dev') + ' eslint',
+return `${chalk.red('error')} - Your project has an older version of ESLint installed${eslintVersion ? ' (' + eslintVersion + ')' : ''}. Please upgrade to ESLint version 7 or above`;
+if (!options.baseConfig!.rules?.[rule] && !options.baseConfig!.rules?.[rule.replace('@next/next', '@next/babel-plugin-next')]) {
+nextEslintPluginIsEnabled && deps.resolved.has('eslint-config-next') ? require(path.join(path.dirname(deps.resolved.get('eslint-config-next')!), 'package.json')).version : null,
+const { lintDuringBuild = false, eslintOptions = null, reportErrorsOnly = false, maxWarnings = -1, formatter = null, outputFile = null, strict = false } = opts;
+(await findUp(['.eslintrc.js', '.eslintrc.cjs', '.eslintrc.yaml', '.eslintrc.yml', '.eslintrc.json', '.eslintrc'], {
+const { config: selectedConfig } = strict ? ESLINT_PROMPT_VALUES.find((opt: { title: string }) => opt.title === 'Strict')! : await cliPrompt();
+const output = format ? format(resultsWithMessages) : resultsWithMessages.map(({ messages, filePath }) => formatMessage(baseDir, messages, filePath)).join('\n');
+resultsWithMessages.length > 0 ? output + `\n\n${chalk.cyan('info')}  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules` : '',
+if (content === '' || content === '{}' || content === '---' || content === 'module.exports = {}') {
+chalk.bold('If you are not trying to use TypeScript, please remove the ' + chalk.cyan('tsconfig.json') + ' file from your package root (and any TypeScript files in your pages directory).') +
+export function withPromiseCache<K, V>(cache: Cache<K, Promise<V>>, fn: (value: K) => Promise<V>): (value: K) => Promise<V>;
+export function withPromiseCache<T extends any[], K, V>(cache: Cache<K, Promise<V>>, fn: (...values: T) => Promise<V>, getKey: (...values: T) => K): (...values: T) => Promise<V>;
+export function withPromiseCache<T extends any[], K, V>(cache: Cache<K, Promise<V>>, fn: (...values: T) => Promise<V>, getKey?: (...values: T) => K): (...values: T) => Promise<V> {
+if ((code === 'EBUSY' || code === 'ENOTEMPTY' || code === 'EPERM' || code === 'EMFILE') && t < 3) {
+export function withCoalescedInvoke<F extends (...args: any) => any>(func: F): (key: string, args: Parameters<F>) => Promise<CoalescedInvoke<UnwrapPromise<ReturnType<F>>>> {
+chalk.green(`\nYour page ${chalk.bold(`app/${normalizedPagePath}`)} did not have a root layout. We created ${chalk.bold(`app${rootLayoutPath.replace(appDir, '')}`)} for you.`) + '\n',
+This might be caused by a React Class Component being rendered in a Server Component, React Class Components only works in Client Components. Read more: https://nextjs.org/docs/messages/class-component-in-server-component"
+console.error(`Error: ${type}s must return an array, received ${typeof routes}.\n` + `See here for more info: https://nextjs.org/docs/messages/routes-must-be-array`);
+console.error(`The route ${JSON.stringify(route)} is not a valid object with \`source\`${type !== 'middleware' ? ` and \`${type === 'header' ? 'headers' : 'destination'}\`` : ''}`);
+if (type === 'rewrite' && (route as Rewrite).basePath === false && !((route as Rewrite).destination.startsWith('http://') || (route as Rewrite).destination.startsWith('https://'))) {
+} rewrites urls outside of the basePath. Please use a destination that starts with \`http://\` or \`https://\` https://nextjs.org/docs/messages/invalid-external-rewrite`,
+} else if (type === 'rewrite' && !_route.destination.match(/^(\/|https:\/\/|http:\/\/)/)) {
+invalidParts.push(`\`destination\` has segments not in \`source\` or \`has\` (${[...invalidDestSegments].join(', ')})`);
+invalidKeys.length ? (hasInvalidParts ? ',' : '') + ` invalid field${invalidKeys.length === 1 ? '' : 's'}: ` + invalidKeys.join(',') : ''
+source: `${srcBasePath}/${item.locale}${r.source === '/' && !config.trailingSlash ? '' : r.source}`,
+r.source = `/:nextInternalLocale(${config.i18n.locales.map((locale: string) => escapeStringRegexp(locale)).join('|')})${r.source === '/' && !config.trailingSlash ? '' : r.source}`;
+if (!Array.isArray(_rewrites) && typeof _rewrites === 'object' && Object.keys(_rewrites).every((key) => key === 'beforeFiles' || key === 'afterFiles' || key === 'fallback')) {
+frames: ['[    ]', '[=   ]', '[==  ]', '[=== ]', '[ ===]', '[  ==]', '[   =]', '[    ]', '[   =]', '[  ==]', '[ ===]', '[====]', '[=== ]', '[==  ]', '[=   ]'],
+await nextExportSpan.traceChild('copy-next-static-directory').traceAsyncFn(() => recursiveCopy(join(distDir, CLIENT_STATIC_FILES_PATH), join(outDir, '_next', CLIENT_STATIC_FILES_PATH)));
+const htmlDest = join(outDir, `${route}${subFolders && route !== '/index' ? `${sep}index` : ''}.html`);
+throw new Error(`The provided export path '${updatedPath}' doesn't match the '${page}' page.\nRead more: https://nextjs.org/docs/messages/export-path-mismatch`);
+if ([`/${statusCode}`, `/${statusCode}.html`, `/${statusCode}/index.html`].some((p) => p === updatedPath || `/${locale}${p}` === updatedPath)) {
+if (locale && buildExport && renderOpts.domainLocales && renderOpts.domainLocales.some((dl) => dl.defaultLocale === locale || dl.locales?.includes(locale || ''))) {
+const isBuiltinPaths = ['/500', '/404'].some((p) => p === path || p === path + '.html');
+const isDynamicUsageError = (err: any) => err.digest === DYNAMIC_ERROR_CODE || isNotFoundError(err) || err.digest === NEXT_DYNAMIC_NO_SSR_CODE || isRedirectError(err);
+const { AppRouteRouteHandler } = require('../server/future/route-handlers/app-route-route-handler') as typeof import('../server/future/route-handlers/app-route-route-handler');
+console.error(`\nError occurred prerendering page "${path}". Read more: https://nextjs.org/docs/messages/prerender-error\n` + (isError(error) && error.stack ? error.stack : error));

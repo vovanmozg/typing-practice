@@ -1,0 +1,4 @@
+- настроить prettier (конфиг рядом)
+- положить js-файлы в папку source
+- увеличить длину строк претиром `prettier --write --ignore-unknown ./source`
+- найти длинные строки `ruby long-js.rb ./source`
