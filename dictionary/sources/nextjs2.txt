@@ -1,0 +1,119 @@
+export type RootStackParamList = {
+Home: undefined;
+Quiz: undefined;
+ResultQuiz: undefined;
+};
+export type TImportedChoices = {
+[key: string]: string;
+
+export type TTag = 'beginner-level' | 'intermediate-level' | 'advanced-level';
+export type TImportedRubyQueistion = {
+question: string;
+type: 'mc' | 'ma';
+choices: TImportedChoices;
+answer: 'string';
+tags: TTag[];
+import { TImportedRubyQueistion } from 'app/types/tImportedQubyQuestions';
+export type TChoice = {
+index: string;
+value: string;
+export type TQuizItem = Omit<TImportedRubyQueistion, 'choices'> & {
+choices: TChoice[];
+import { create } from 'zustand';
+import { TChoice, TQuizItem } from 'app/types/tQuizItem';
+type TAnswer = {
+choice: TChoice;
+quizItem: TQuizItem;
+type TSelectAnswer = { choice: TChoice; quizItem: TQuizItem };
+export type TQuizState = {
+answers: { [key: string]: TAnswer };
+current: number;
+quizItems: TQuizItem[] | null;
+quizStatus: 'notStarted' | 'inProgress' | 'finished';
+nextQuizItem: () => void;
+selectAnswer: (params: TSelectAnswer) => void;
+setQuizItems: (quizItems: TQuizItem[]) => void;
+export const useStore = create<TQuizState>(set => ({
+current: 0,
+quizItems: null,
+quizStatus: 'notStarted',
+answers: {},
+setQuizItems: (quizItems: TQuizItem[]) => {
+set(() => ({ quizItems, quizStatus: 'inProgress', current: 0 }));
+},
+selectAnswer: (params: TSelectAnswer) => {
+const { choice, quizItem } = params;
+set((state: TQuizState) => {
+const answers = { ...state.answers };
+const answer = {
+choice,
+quizItem,
+answers[quizItem.question] = answer;
+return { answers };
+});
+nextQuizItem: () => {
+set(state => {
+const newCurrent = state.current + 1;
+if (state.quizItems && state.quizItems[newCurrent]) {
+return { current: state.current + 1 };
+} else {
+return { quizStatus: 'finished' };
+}
+}));
+declare module '*.png';
+import { TQuizState, useStore } from 'app/store/quizState';
+export function useCurrentQuizItem() {
+return useStore((state: TQuizState) => state.current);
+import { useEffect, useState } from 'react';
+import rq from 'ruby-questions';
+import {
+TImportedChoices,
+TImportedRubyQueistion,
+} from 'app/types/tImportedQubyQuestions';
+function transformChoices(choices: TImportedChoices): TChoice[] {
+const entries = Object.entries(choices);
+return entries.map(([index, value]) => ({ index, value }));
+function transformRubyQuestion(
+rubyQuestion: TImportedRubyQueistion,
+): TQuizItem {
+return {
+...rubyQuestion,
+choices: transformChoices(rubyQuestion.choices),
+} as TQuizItem;
+function transformRubyQuestions(
+rubyQuestions: TImportedRubyQueistion[],
+): TQuizItem[] {
+return rubyQuestions.map(transformRubyQuestion);
+export function useStartQuiz() {
+const [quizItems, setQuizItems] = useStore((state: TQuizState) => [
+state.quizItems,
+state.setQuizItems,
+]);
+useEffect(() => {
+setQuizItems(
+transformRubyQuestions(rq.ruby)
+.sort(() => 0.5 - Math.random())
+.slice(0, 3),
+);
+}, []);
+return quizItems;
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from 'app/types/app';
+export function useNextQuizItem() {
+const [nextQuizItem, quizStatus] = useStore((state: TQuizState) => [
+state.nextQuizItem,
+state.quizStatus,
+const navigation =
+useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+console.log(quizStatus);
+if (quizStatus === 'finished') {
+console.log('navigate.....');
+navigation.navigate('ResultQuiz');
+return;
+return nextQuizItem;
+export { QuizScreen } from './QuizScreen';
+export { ResultQuizScreen } from './ResultQuizScreen';
+export const DEBUG = true;
+export function bg(color = 'secondary.300') {
+return DEBUG ? color : null;

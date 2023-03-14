@@ -1,0 +1,685 @@
+
+.scan(/^(\d+)(\d\d)(\d\d)(?!\d)/).first
+.collect(&:to_i)
+.join("."))
+warnings = []
+header_directory = File.expand_path(File.join(File.dirname(__FILE__), "../../../ext/nokogiri"))
+{}.tap do |vi|
+vi["warnings"] = []
+vi["nokogiri"] = {}.tap do |nokogiri|
+ldflags = []
+lib_directory = File.expand_path(File.join(File.dirname(__FILE__), "../#{ruby_minor}"))
+lib_directory = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+ldflags << "-l:nokogiri.so"
+vi["ruby"] = {}.tap do |ruby|
+ruby["gem_platform"] = ::Gem::Platform.local.to_s
+ruby["engine"] = engine
+ruby["jruby"] = jruby? if jruby?
+vi["libxml"] = {}.tap do |libxml|
+libxml["source"] = "packaged"
+libxml["source"] = "system"
+vi["libxslt"] = {}.tap do |libxslt|
+libxslt["source"] = "packaged"
+libxslt["source"] = "system"
+vi["other_libraries"] = {}.tap do |ol|
+ol[k] = v
+[]
+namespace_path = inspecting.name.split("::")[0..-2]
+related_class_name = (namespace_path << class_name).join("::")
+class << self
+or:
+url ||= string_or_io.respond_to?(:path) ? string_or_io.path : nil
+return encoding ? new.tap { |i| i.encoding = encoding } : new
+doc = if string_or_io.respond_to?(:read)
+url ||= string_or_io.path
+string_or_io.nil? ||
+(string_or_io.respond_to?(:empty?) && string_or_io.empty?) ||
+(string_or_io.respond_to?(:eof?) && string_or_io.eof?)
+arg.each do |k, v|
+key = k.to_s
+elm[k.to_s] = v.to_s
+if (ns = elm.namespace_definitions.find { |n| n.prefix.nil? || (n.prefix == "") })
+xpath("//namespace::*").each_with_object({}) do |ns, hash|
+hash[["xmlns", ns.prefix].compact.join(":")] = ns.href if ns.prefix != "xml"
+@decorators ||= {}
+@decorators[key] ||= []
+root ? root.namespaces : {}
+alias_method :<<, :add_child
+{ root: root }
+[:name, :children]
+k = k.to_s.gsub(/.*:/, "") # strip off 'xmlns:' or 'xml:'
+new({}, root, &block)
+def initialize(options = {}, root = nil, &block)
+@parent = @doc = related_class("Document").new
+@arity = nil
+@ns = nil
+options.each do |k, v|
+@doc.send(:"#{k}=", v)
+if @arity <= 0
+@parent = @doc
+def [](ns)
+if @parent != @doc
+@ns = @parent.namespace_definitions.find { |x| x.prefix == ns.to_s }
+next if a == doc
+@ns = a.namespace_definitions.find { |x| x.prefix == ns.to_s }
+@ns = { pending: ns.to_s }
+options = args.first.is_a?(Hash) ? args.shift : {}
+@doc.to_xml(*args)
+def <<(string)
+@doc.fragment(string).children.each { |x| insert(x) }
+node = @doc.create_element(method.to_s.sub(/[_!]$/, ""), *args) do |n|
+if @ns.is_a?(Hash)
+@arity ||= block.arity
+@node = node
+def []=(k, v)
+@node[k] = v
+def [](k)
+@node[k]
+opts = args.last.is_a?(Hash) ? args.pop : {}
+when /^(.*)!$/
+@node["id"] = Regexp.last_match(1)
+when /^(.*)=/
+@node["class"] =
+((@node["class"] || "").split(/\s/) + [method.to_s]).join(" ")
+opts.each do |k, v|
+@node[k.to_s] = ((@node[k.to_s] || "").split(/\s/) + [v]).join(" ")
+level == 0
+level == 1
+level == 2
+level == 3
+.compact.join(": ")
+return nil if nil_or_zero?(line) && nil_or_zero?(column)
+[c1, c2].compact
+def self.new(name, doc, *args)
+wrapper_doc = XML::Document.parse("<root>#{tags}</root>", nil, nil, options)
+wrapper_doc.xpath("/root/node()")
+def errors=(things) # :nodoc:
+prefix = namespace.prefix.nil? ? "" : ":#{namespace.prefix}"
+%{xmlns#{prefix}="#{namespace.href}"}
+end.join(" ")
+def start_element(name, attrs = [])
+def start_element_namespace(name, attrs = [], prefix = nil, uri = nil, ns = [])
+name = [prefix, name].compact.join(":")
+[["xmlns", ns_prefix].compact.join(":"), ns_uri]
+end + attrs.map do |attr|
+end_element([prefix, name].compact.join(":"))
+def self.new(thing, encoding = "UTF-8")
+if [:read, :close].all? { |x| thing.respond_to?(x) }
+}
+if thing.respond_to?(:read) && thing.respond_to?(:close)
+def initialize(doc = XML::SAX::Document.new, file_name = nil, encoding = "UTF-8")
+@sax_parser = XML::SAX::Parser.new(doc)
+alias_method :<<, :write
+write("", true)
+[:name, :namespace, :value]
+first.__send__(:add_sibling, :previous, node_or_tags)
+def <<(node_or_tags)
+node_or_tags.each { |n| add_previous_sibling(n) }
+def [](name)
+def []=(name, value)
+set(name.to_s, value.to_s)
+new_kws = (current_kws + (keywords - current_kws)).join(" ")
+new_kws = (current_kws + keywords).join(" ")
+alias_method :attr, :[]
+alias_method :set_attribute, :[]=
+if !element? && !document? && (!parent || parent.fragment?)
+key = prefix ? "xmlns:#{prefix}" : "xmlns"
+hash[key] = ns.href
+is_a?(XML::Document)
+document.xml? ? to_xml : to_html
+children.map { |x| x.to_html(*args) }.join
+path.split(%r{/}).filter_map do |part|
+part.empty? ? nil : part.gsub(/\[(\d+)\]/, ':nth-of-type(\1)')
+end.join(" > ")
+children.each { |j| j.traverse(&block) }
+def ==(other)
+def <=>(other)
+{
+save_with: args[1],
+def to_html(options = {})
+def to_xml(options = {})
+def to_xhtml(options = {})
+options = options.first.is_a?(Hash) ? options.shift : {}
+indent_times = options[:indent] || 0
+indent_times = options[:indent] || 2
+indent_text = options[:indent_text] || " "
+indentation = indent_times.zero? ? "" : (indent_text * indent_times)
+def write_html_to(io, options = {})
+def write_xhtml_to(io, options = {})
+def write_xml_to(io, options = {})
+tn = node.is_a?(XML::Node) ? node : parent
+{}.tap do |values|
+keywords.scan(/\S+/)
+iter = next_or_previous == :next ? :reverse_each : :each
+node_or_tags.send(iter) { |n| pivot.send(impl, n) }
+node.attribute_nodes.find_all { |a| a.name.include?(":") }.each do |attr_node|
+[:name]
+yield([key, value])
+html_dtd? &&
+external_id.nil? &&
+(system_id.nil? || system_id == "about:legacy-compat")
+{ prefix: prefix, href: href }
+[:prefix, :href]
+@options |= #{constant}
+@options &= ~#{constant}
+other.to_i == to_i
+options = []
+options << k.downcase if send(:"#{k.downcase}?")
+super.sub(/>$/, " " + options.join(", ") + ">")
+list.each { |x| self << x }
+def first(n = nil)
+list = []
+[n, length].min.times { |i| list << self[i] }
+self[-1]
+length == 0
+each_with_index { |member, j| return j if member == node }
+alias_method :<<, :push
+def at(*args)
+if args.length == 1 && args.first.is_a?(Numeric)
+alias_method :%, :at
+find_all { |node| node.matches?(expr) }
+each do |el|
+def attr(key, value = nil, &block)
+unless key.is_a?(Hash) || (key && (value || block))
+hash = key.is_a?(Hash) ? key : { key => value }
+hash.each do |k, v|
+node[k] = v || yield(node)
+each { |el| el.delete(name) }
+0.upto(length - 1) do |x|
+collect(&:inner_text).join("")
+collect { |j| j.inner_html(*args) }.join("")
+map { |node| node.wrap(node_or_tags) }
+map(&:to_s).join
+encoding = (args.first.is_a?(Hash) ? args.first[:encoding] : nil) || document.encoding
+map { |x| x.to_html(*args) }.join
+map { |x| x.to_xhtml(*args) }.join
+map { |x| x.to_xml(*args) }.join
+node.children.each { |n| node_set.push(n) }
+(length - 1).downto(0) do |x|
+alias_method :+, :|
+xpaths = paths.map(&:to_s).map do |path|
+xpath(*(xpaths + [ns, handler, binds].compact))
+ns = (document.root&.namespaces || {})
+xpath(CSS.xpath_for(selector, prefix: "./", ns: ns).first)
+if paths.length == 1
+xpath_impl(node, path, handler, ns, binds).each { |set| combined << set }
+path = path.gsub(/xmlns:/, " :") unless Nokogiri.uses_libxml?
+rules.map { |rule| xpath_query_from_css_rule(rule, ns) }
+)
+visitor: visitor, })
+end.join(" | ")
+hashes = []
+while Hash === params.last || params.last.nil?
+ns ||= (document.root&.namespaces || {})
+def initialize(source, url = nil, encoding = nil) # :nodoc:
+nice_name = self.class.name.split("::").last
+pp.group(2, "#(#{nice_name} ", ")") do
+!attribute || (attribute.respond_to?(:empty?) && attribute.empty?)
+pp.group(2, "#(#{nice_name}:#{format("0x%x", object_id)} {", "})") do
+[t, send(t)] if respond_to?(t)
+end.find_all do |x|
+pp.group(2, "#{v.first.to_s.sub(/_\w+$/, "s")} = [", "]") do
+pp.text("#{v.first} = ")
+pp.pp(v.last)
+[super.chomp, str1].compact.join(": ")
+def self.HTML5(input, url = nil, encoding = nil, **options, &block)
+def parse(string, url = nil, encoding = nil, **options, &block)
+def get(uri, options = {})
+def get_impl(uri, options = {})
+uri = URI(uri) unless URI === uri
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true if uri.scheme == "https"
+http.send("#{key}=", headers.delete(key)) if http.respond_to?("#{key}=")
+auth ||= [uri.user, uri.password] if uri.user && uri.password
+headers.each { |key, value| request[key.to_s] = value.to_s }
+if initial_bytes[0..2] == [0xEF, 0xBB, 0xBF]
+elsif initial_bytes[0..1] == [0xFE, 0xFF]
+elsif initial_bytes[0..1] == [0xFF, 0xFE]
+encoding ||= content_type[/charset=["']?(.*?)($|["';\s])/i, 1]
+data = body[0..1023].gsub(/<!--.*?(-->|\Z)/m, "")
+data.scan(/<meta.*?>/im).each do |meta|
+encoding ||= meta[/charset=["']?([^>]*?)($|["'\s>])/im, 1]
+:empty, :depr, :dtd, :isinline,
+:desc,
+:attrs_opt, :attrs_depr, :attrs_req)
+d ? d.attrs_opt : []
+d ? d.attrs_depr : []
+d ? d.attrs_req : []
+FONTSTYLE = ["tt", "i", "b", "u", "s", "strike", "big", "small"]
+PHRASE = ["em", "strong", "dfn", "code", "samp",
+SPECIAL = ["a", "img", "applet", "embed", "object", "font", "basefont",
+HEADING = ["h1", "h2", "h3", "h4", "h5", "h6"]
+LIST = ["ul", "ol", "dir", "menu"]
+FORMCTRL = ["input", "select", "textarea", "label", "button"]
+COREATTRS = ["id", "class", "style", "title"]
+I18N = ["lang", "dir"]
+EVENTS = ["onclick", "ondblclick", "onmousedown", "onmouseup",
+AREA_ATTRS = ["shape", "coords", "href", "nohref",
+BODY_DEPR = ["background", "bgcolor", "text",
+FORM_ATTRS = [ATTRS, "method", "enctype", "accept", "name", "onsubmit",
+HEAD_CONTENTS = ["title", "isindex", "base", "script", "style", "meta",
+HR_DEPR = ["align", "noshade", "size", "width"]
+IMG_ATTRS = [ATTRS, "longdesc", "name", "height", "width", "usemap",
+LINK_ATTRS = [ATTRS, "charset", "href", "hreflang", "type", "rel", "rev",
+OBJECT_DEPR = ["align", "border", "hspace", "vspace"]
+OL_ATTRS = ["type", "compact", "start"]
+PARAM_ATTRS = ["id", "value", "valuetype", "type"]
+SCRIPT_ATTRS = ["charset", "src", "defer", "event", "for"]
+TABLE_CONTENTS = ["caption", "col", "colgroup", "thead", "tfoot", "tbody",
+TH_TD_DEPR = ["nowrap", "bgcolor", "width", "height"]
+TH_TD_ATTR = [ATTRS, "abbr", "axis", "headers", "scope", "rowspan",
+[
+["a", false, false, false, false, false, :any, true,
+["abbr", false, false, false, false, false, :any, true,
+["acronym", false, false, false, false, false, :any, true, "",
+["address", false, false, false, false, false, :any, false,
+["applet", false, false, false, false, true, :loose, true,
+["area", false, true, true, true, false, :any, false,
+["b", false, true, false, false, false, :any, true,
+["base", false, true, true, true, false, :any, false,
+["basefont", false, true, true, true, true, :loose, true,
+["bdo", false, false, false, false, false, :any, true,
+["big", false, true, false, false, false, :any, true,
+["blockquote", false, false, false, false, false, :any, false,
+["body", true, true, false, false, false, :any, false,
+["br", false, true, true, true, false, :any, true,
+["button", false, false, false, false, false, :any, true,
+["caption", false, false, false, false, false, :any, false,
+["center", false, true, false, false, true, :loose, false,
+["cite", false, false, false, false, false, :any, true, "citation",
+["code", false, false, false, false, false, :any, true,
+["col", false, true, true, true, false, :any, false, "table column ",
+["colgroup", false, true, false, false, false, :any, false,
+["dd", false, true, false, false, false, :any, false,
+["del", false, false, false, false, false, :any, true,
+["dfn", false, false, false, false, false, :any, true,
+["dir", false, false, false, false, true, :loose, false,
+["div", false, false, false, false, false, :any, false,
+["dl", false, false, false, false, false, :any, false,
+["dt", false, true, false, false, false, :any, false,
+["em", false, true, false, false, false, :any, true,
+["embed", false, true, false, false, true, :loose, true,
+["fieldset", false, false, false, false, false, :any, false,
+["font", false, true, false, false, true, :loose, true,
+["form", false, false, false, false, false, :any, false,
+["frame", false, true, true, true, false, :frameset, false,
+["htrue", false, false, false, false, false, :any, false,
+["h4", false, false, false, false, false, :any, false,
+["h5", false, false, false, false, false, :any, false,
+["h6", false, false, false, false, false, :any, false,
+["head", true, true, false, false, false, :any, false,
+["hr", false, true, true, true, false, :any, false,
+["html", true, true, false, false, false, :any, false,
+["i", false, true, false, false, false, :any, true,
+["iframe", false, false, false, false, false, :any, true,
+["img", false, true, true, true, false, :any, true,
+["input", false, true, true, true, false, :any, true,
+["ins", false, false, false, false, false, :any, true,
+["isindex", false, true, true, true, true, :loose, false,
+["kbd", false, false, false, false, false, :any, true,
+["label", false, false, false, false, false, :any, true,
+["legend", false, false, false, false, false, :any, false,
+["li", false, true, true, false, false, :any, false,
+["link", false, true, true, true, false, :any, false,
+["map", false, false, false, false, false, :any, true,
+["menu", false, false, false, false, true, :loose, false,
+["meta", false, true, true, true, false, :any, false,
+["noscript", false, false, false, false, false, :any, false,
+["object", false, false, false, false, false, :any, true,
+["ol", false, false, false, false, false, :any, false,
+["optgroup", false, false, false, false, false, :any, false,
+["option", false, true, false, false, false, :any, false,
+["p", false, true, false, false, false, :any, false,
+["param", false, true, true, true, false, :any, false,
+["pre", false, false, false, false, false, :any, false,
+["q", false, false, false, false, false, :any, true,
+["s", false, true, false, false, true, :loose, true,
+["samp", false, false, false, false, false, :any, true,
+["script", false, false, false, false, false, :any, true,
+["select", false, false, false, false, false, :any, true,
+["small", false, true, false, false, false, :any, true,
+["span", false, false, false, false, false, :any, true,
+["strike", false, true, false, false, true, :loose, true,
+["strong", false, true, false, false, false, :any, true,
+["style", false, false, false, false, false, :any, false,
+["sub", false, true, false, false, false, :any, true,
+["sup", false, true, false, false, false, :any, true,
+["table", false, false, false, false, false, :any, false,
+["tbody", true, false, false, false, false, :any, false,
+["td", false, false, false, false, false, :any, false,
+["textarea", false, false, false, false, false, :any, true,
+["tfoot", false, true, false, false, false, :any, false,
+["th", false, true, false, false, false, :any, false,
+["thead", false, true, false, false, false, :any, false,
+["title", false, false, false, false, false, :any, false,
+["tr", false, false, false, false, false, :any, false,
+["tt", false, true, false, false, false, :any, true,
+["u", false, true, false, false, true, :loose, true,
+["ul", false, false, false, false, false, :any, false,
+["var", false, false, false, false, false, :any, true,
+d[:subelts] = d[:subelts].flatten
+d[:attrs_opt] = d[:attrs_opt].flatten
+d[:attrs_depr] = d[:attrs_depr].flatten
+d[:attrs_req] = d[:attrs_req].flatten
+rescue => e
+if (meta = at_xpath("//meta[@charset]"))
+meta["content"][/charset\s*=\s*([\w-]+)/i, 1]
+meta["content"] = format("text/html; charset=%s", encoding)
+elsif (meta = at_xpath("//meta[@charset]"))
+meta = XML::Node.new("meta", self)
+if (dtd = internal_subset) && dtd.html5_dtd?
+meta["http-equiv"] = "Content-Type"
+if (head = at_xpath("//head"))
+xpath("//meta[@http-equiv and boolean(@content)]").find do |node|
+node["http-equiv"] =~ /\AContent-Type\z/i
+(title = at_xpath("//title")) && title.inner_text
+tnode = XML::Text.new(text, self)
+if (title = at_xpath("//title"))
+title = XML::Node.new("title", self) << tnode
+head << title
+elsif (meta = (at_xpath("//meta[@charset]") || meta_content_type))
+elsif (html = at_xpath("//html"))
+html = add_child(XML::Node.new("html", self))
+head = html.add_child(XML::Node.new("head", self))
+if string_or_io.nil? || string_or_io.empty?
+new(doc, tags, nil, options, &block)
+node_set = ctx.parse("<div>#{tags}</div>", options)
+path = if /^\s*?<body/i.match?(tags)
+def parse_io(io, encoding = "UTF-8")
+def initialize(doc = HTML4::SAX::Document.new, file_name = nil, encoding = "UTF-8")
+(val = get(name)) && val.value
+(charset = attr["charset"]) &&
+(http_equiv = attr["http-equiv"]) &&
+http_equiv.match(/\AContent-Type\z/i) &&
+(content = attr["content"]) &&
+(m = content.match(/;\s*charset\s*=\s*([\w-]+)/)) &&
+(@encoding = m[1])
+throw(@jumptag, nil) if /\A(?:div|h1|img|p|br)\z/.match?(name)
+(m = chunk.match(/\A(<\?xml[ \t\r\n][^>]*>)/)) &&
+(m = chunk.match(/(<meta\s)(.*)(charset\s*=\s*([\w-]+))(.*)/i)) &&
+(return m[4])
+@io = io
+(@firstchunk = @io.read(len)) || (return nil)
+ret = @firstchunk.slice!(0, len)
+if (len -= ret.length) > 0
+(rest = @io.read(len)) && ret << (rest)
+list = xpath("#{XPATH_PREFIX}#{name.to_s.sub(/^_/, "")}")
+if hash[:css]
+list = css("#{name}#{hash[:css]}")
+conds = Array(hash[:xpath]).join(" and ")
+list = xpath(
+list.length == 1 ? list.first : list
+def parse(string, modules = {})
+key, value = kv.map(&:to_s)
+value = if /'/.match?(value)
+def parse(string_or_io, url = nil, encoding = nil, **options, &block)
+if string_or_io.respond_to?(:read) && string_or_io.respond_to?(:path)
+def read_io(io, url = nil, encoding = nil, **options)
+doc.encoding = "UTF-8"
+@url = nil
+def to_xml(options = {}, &block) # :nodoc:
+def initialize(doc, tags = nil, ctx = nil, options = {})
+self.errors = []
+def serialize(options = {}, &block) # :nodoc:
+def self.parse(tags, encoding = nil, options = {})
+ns ||=
+ns = {}
+def inner_html(options = {})
+result = options[:preserve_newline] && prepend_newline? ? +"\n" : +""
+indent_string = (options[:indent_text] || " ") * indent_times
+io << html.encode(encoding, fallback: lambda { |c| "&#x#{c.ord.to_s(16)};" })
+def apply_to(document, params = [])
+require 'net/sf/saxon/Saxon-HE/9.6.0-4/Saxon-HE-9.6.0-4.jar'
+require_jar 'xalan', 'xalan', '2.7.2'
+require_jar 'xerces', 'xercesImpl', '2.12.2'
+require_jar 'org.nokogiri', 'nekodtd', '0.1.11.noko1'
+require_jar 'net.sf.saxon', 'Saxon-HE', '9.6.0-4'
+require_jar 'xml-apis', 'xml-apis', '1.4.01'
+require_jar 'xalan', 'serializer', '2.7.2'
+storage.key?(name) ? new(storage[name]) : nil
+@storage ||= {}
+@name = name
+identifier.gsub(/\\(?:([^0-9a-fA-F])|([0-9a-fA-F]{1,6})\s?)/){ |m| $1 || [$2.hex].pack('U') }
+str.gsub(/\\(?:([^0-9a-fA-F])|([0-9a-fA-F]{1,6})\s?)/) do |m|
+if $1=="\n"
+$1 || [$2.hex].pack('U')
+racc_goto_table = [
+racc_goto_check = [
+0, 0, :racc_error,
+3, 33, :_reduce_1,
+1, 33, :_reduce_2,
+2, 33, :_reduce_3,
+1, 37, :_reduce_4,
+1, 37, :_reduce_5,
+1, 37, :_reduce_6,
+1, 37, :_reduce_7,
+1, 37, :_reduce_8,
+2, 38, :_reduce_9,
+1, 39, :_reduce_10,
+2, 40, :_reduce_11,
+1, 40, :_reduce_none,
+2, 40, :_reduce_13,
+2, 40, :_reduce_14,
+1, 40, :_reduce_15,
+2, 35, :_reduce_17,
+3, 34, :_reduce_18,
+3, 34, :_reduce_19,
+1, 34, :_reduce_none,
+2, 47, :_reduce_21,
+1, 41, :_reduce_none,
+1, 41, :_reduce_23,
+3, 48, :_reduce_24,
+1, 48, :_reduce_25,
+1, 49, :_reduce_26,
+0, 49, :_reduce_none,
+4, 45, :_reduce_28,
+4, 45, :_reduce_29,
+3, 45, :_reduce_30,
+3, 50, :_reduce_31,
+1, 50, :_reduce_32,
+1, 50, :_reduce_none,
+2, 43, :_reduce_34,
+3, 43, :_reduce_35,
+3, 43, :_reduce_36,
+3, 43, :_reduce_37,
+3, 43, :_reduce_38,
+3, 52, :_reduce_39,
+3, 52, :_reduce_40,
+3, 52, :_reduce_41,
+3, 52, :_reduce_42,
+1, 52, :_reduce_none,
+1, 52, :_reduce_45,
+4, 53, :_reduce_47,
+3, 53, :_reduce_48,
+2, 53, :_reduce_49,
+2, 44, :_reduce_50,
+2, 44, :_reduce_51,
+1, 42, :_reduce_none,
+0, 42, :_reduce_none,
+2, 46, :_reduce_54,
+2, 46, :_reduce_55,
+2, 46, :_reduce_56,
+2, 46, :_reduce_57,
+2, 46, :_reduce_58,
+1, 46, :_reduce_none,
+1, 54, :_reduce_64,
+2, 51, :_reduce_65,
+2, 51, :_reduce_66,
+2, 51, :_reduce_67,
+0, 51, :_reduce_none,
+1, 56, :_reduce_69,
+1, 56, :_reduce_70,
+1, 56, :_reduce_71,
+1, 56, :_reduce_72,
+1, 56, :_reduce_73,
+1, 56, :_reduce_74,
+1, 56, :_reduce_75,
+3, 55, :_reduce_76,
+1, 57, :_reduce_none,
+2, 57, :_reduce_none,
+1, 36, :_reduce_none,
+0, 36, :_reduce_none ]
+racc_token_table = {
+false => 0,
+:error => 1,
+:S => 9,
+Racc_arg = [
+Racc_token_to_s_table = [
+result = [val[0], val[2]].flatten
+result = [val[1]].flatten
+result = val[1]
+val[0]
+result = Node.new(val[0], [nil, val[1]])
+result = Node.new(val[1], [val[0], val[2]])
+result = Node.new(:ELEMENT_NAME, [[val[0], val[2]].compact.join(':')])
+name = @namespaces.key?('xmlns') ? "xmlns:#{val[0]}" : val[0]
+result = val[0]
+result = Node.new(:ATTRIB_NAME, [[val[0], val[2]].compact.join(':')])
+result = Node.new(:FUNCTION, [val[0].strip, val[1]].flatten)
+result = [val[0], val[2]]
+result = Node.new(:NTH, ['2','n','+','0'])
+when 'odd'
+result = Node.new(:NTH, ['2','n','+','1'])
+when 'n'
+result = Node.new(:NTH, ['1','n','+','0'])
+if val[1] == 'n'
+result = Node.new(:NTH, val)
+raise Racc::ParseError, "parse error on IDENT '#{val[1]}'"
+if val[0] == 'n'
+val.unshift("1")
+elsif val[0] == '-n'
+val[0] = 'n'
+val.unshift("-1")
+n = val[1]
+if n[0, 2] == 'n-'
+val[1] = 'n'
+val << "-"
+val << n[2, n.size]
+elsif n == 'n'
+val << "+"
+val << "0"
+result = [val[0], unescape_css_identifier(val[1])]
+result = [val[0], unescape_css_string(val[1])]
+result = [val[0], val[1]]
+result = Node.new(:NOT, [val[1]])
+class Node # :nodoc:
+@type = type
+visitor.send(:"visit_#{type.to_s.downcase}", self)
+matches = []
+matches << self if to_type == types
+@value.each do |v|
+[@type] + @value.filter_map do |n|
+n.to_type if n.respond_to?(:to_type)
+[@type] + @value.map { |n| n.respond_to?(:to_a) ? n.to_a : [n] }
+msg = :"visit_function_#{node.value.first.gsub(/[(]/, "")}"
+when /^text\(/
+when /^self\(/
+when /^eq\(/
+when /^(nth|nth-of-type)\(/
+if node.value[1].is_a?(Nokogiri::CSS::Node) && (node.value[1].type == :NTH)
+when /^nth-child\(/
+when /^nth-last-of-type\(/
+nth(node.value[1], last: true)
+index = node.value[1].to_i - 1
+index == 0 ? "position()=last()" : "position()=last()-#{index}"
+when /^nth-last-child\(/
+nth(node.value[1], last: true, child: true)
+when /^(first|first-of-type)\(/
+when /^(last|last-of-type)\(/
+when /^contains\(/
+when /^gt\(/
+when /^only-child\(/
+when /^comment\(/
+when /^has\(/
+is_direct = node.value[1].value[0].nil? # e.g. "has(> a)", "has(~ a)", "has(+ a)"
+args = ["."]
+args += node.value[1..-1].map do |n|
+n.is_a?(Nokogiri::CSS::Node) ? n.accept(self) : n
+node.value.first =~ /^#(.*)$/
+value = "'#{value}'" unless /^['"]/.match?(value)
+if (value[0] == value[-1]) && %q{"'}.include?(value[0])
+str_value = value[1..-2]
+value = 'concat("' + str_value.split('"', -1).join(%q{",'"',"}) + '","")'
+attribute + "=" + value.to_s
+attribute + "!=" + value.to_s
+value = value[1..-2] # strip quotes
+attribute + " #{node.value[1]} " + value.to_s
+if node.value.first.is_a?(Nokogiri::CSS::Node) && (node.value.first.type == :FUNCTION)
+msg = :"visit_pseudo_class_#{node.value.first.gsub(/[(]/, "")}"
+when "first" then "position()=1"
+when "last" then "position()=last()"
+when "first-of-type" then "position()=1"
+when "last-of-type" then "position()=last()"
+when "only-of-type" then "last()=1"
+when "empty" then "not(node())"
+when "parent" then "node()"
+when "root" then "not(parent::*)"
+node.value.first + "(.)"
+}.each do |k, v|
+def visit_#{k} node
+node.value.first.accept(self) + "[" +
+node.value.last.accept(self) + "]"
+node.value.first != "*" &&
+!node.value.first.include?(":")
+def nth(node, options = {})
+a, b = read_a_and_positive_b(node.value)
+options[:last] ? "(count(following-sibling::*)+1)" : "(count(preceding-sibling::*)+1)"
+options[:last] ? "(last()-position()+1)" : "position()"
+if b.zero?
+compare = a < 0 ? "<=" : ">="
+if a.abs == 1
+op = values[2]
+if op == "+"
+a = values[0].to_i
+b = values[3].to_i
+elsif op == "-"
+b = a - (values[3].to_i % a)
+[a, b]
+if node.value[0].is_a?(Nokogiri::CSS::Node) && (node.value[0].type == :FUNCTION)
+end =~ /(nth|first|last|only)-of-type(\()?/
+{ uplevel: 1 },
+File.open(filename, "r") do |f|
+until token = _next_token or @ss.eos?; end
+text = @ss.peek(1)
+when (text = @ss.scan(/has\([\s]*/))
+action { [:HAS, text] }
+action { [:IDENT, text] }
+action { [:HASH, text] }
+when (text = @ss.scan(/[\s]*~=[\s]*/))
+when (text = @ss.scan(/[\s]*\|=[\s]*/))
+when (text = @ss.scan(/[\s]*\^=[\s]*/))
+when (text = @ss.scan(/[\s]*\$=[\s]*/))
+when (text = @ss.scan(/[\s]*\*=[\s]*/))
+when (text = @ss.scan(/[\s]*!=[\s]*/))
+when (text = @ss.scan(/[\s]*=[\s]*/))
+action { [:EQUAL, text] }
+when (text = @ss.scan(/[\s]*\)/))
+when (text = @ss.scan(/\[[\s]*/))
+when (text = @ss.scan(/[\s]*\]/))
+when (text = @ss.scan(/[\s]*\+[\s]*/))
+action { [:PLUS, text] }
+when (text = @ss.scan(/[\s]*>[\s]*/))
+when (text = @ss.scan(/[\s]*,[\s]*/))
+action { [:COMMA, text] }
+when (text = @ss.scan(/[\s]*~[\s]*/))
+action { [:TILDE, text] }
+when (text = @ss.scan(/\:not\([\s]*/))
+action { [:NOT, text] }
+when (text = @ss.scan(/-?([0-9]+|[0-9]*\.[0-9]+)/))
+when (text = @ss.scan(/[\s]*\/\/[\s]*/))
+when (text = @ss.scan(/[\s]*\/[\s]*/))
+action { [:SLASH, text] }
+when (text = @ss.scan(/U\+[0-9a-f?]{1,6}(-[0-9a-f]{1,6})?/))
+when (text = @ss.scan(/[\s]+/))
+action { [:S, text] }
+when (text = @ss.scan(/./))
+action { [text, text] }
+text = @ss.string[@ss.pos .. -1]
+@cache = {}
+def [](string)
+def []=(string, value)
+self.class[key] ||= parse(string).map do |ast|
+ns = options.fetch(:ns, {})
+x = $-w
+$-w = false
+$-w = x

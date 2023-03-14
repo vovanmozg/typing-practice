@@ -33,7 +33,7 @@ def long_completed_line?(str)
 end
 
 def a_lot_of_letters?(str)
-  str.scan(/[a-zA-Z0-9]/).size > str.size - 40
+  str.scan(/[a-zA-Z0-9]/).size > str.size * 0.8
 end
 
 def has_non_ascii?(str)
