@@ -43,6 +43,8 @@ class CodeFinder::Traverser
     log("found #{files.size} files in #{pattern}")
 
     files.map do |file|
+      next if File.directory?(file)
+
       lines = File.readlines(file).map(&:chop).map(&:strip)
       ku = lines.select do |str|
         yield checker, str

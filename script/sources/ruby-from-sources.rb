@@ -15,3 +15,6 @@ CodeFinder.new('Ruby').run(dir, 'gems') do |checker, str|
   #   !checker.a_lot_of_letters?(str) &&
 
 end
+
+# remove square brackets
+# cat gems.txt | grep -v "\[" | grep -v "\]" > gems-pub.txt
