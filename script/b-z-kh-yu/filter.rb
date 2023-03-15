@@ -8,6 +8,7 @@ lines = lines
   .select { |word| word.scan(/[бзюхБЗЮХ]/).size >= 3 }
   .map { |word| word.chomp.gsub(%r{/[^\s]+},"") }
   .sort_by(&:size)
+  .grep(/^[йцукенгшфывапролячсмитьзхбю]+$/)
 
 
 # p lines.take(10)
